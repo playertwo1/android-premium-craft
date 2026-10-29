@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/hero.svg" alt="Android Premium Craft - projetar, construir, criticar e verificar UI Android com evidência" width="100%">
+  <img src="docs/images/hero.png" alt="Android Premium Craft - projetar, construir, criticar e verificar UI Android com evidência" width="100%">
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@ Ela dá ao agente três coisas que ele não tem sozinho:
 
 ## Antes e depois
 
-<p align="center"><img src="docs/images/before-after.svg" alt="Esquerda: tela típica gerada por IA. Direita: a mesma tela com a skill aplicada." width="100%"></p>
+<p align="center"><img src="docs/images/before-after.png" alt="Esquerda: tela típica gerada por IA. Direita: a mesma tela com a skill aplicada." width="100%"></p>
 
 À esquerda, o que agentes costumam gerar: o roxo de exemplo do Material, um "Bem-vindo de volta" ocupando a primeira dobra, três blocos iguais com emoji, card dentro de card, texto cinza de 10sp e um spinner bloqueando tudo. À direita, com a skill: um fato principal com sinal e horário de atualização, uma ação primária, lista com valores alinhados e numerais tabulares, papéis de cor verificados e barra de navegação com rótulos. Cada problema da esquerda corresponde a uma regra do lint.
 
@@ -78,13 +78,13 @@ Como a nota é calculada (`scripts/critique_score.py`, então o mesmo julgamento
 
 ## O ciclo de ofício
 
-<p align="center"><img src="docs/images/craft-loop.svg" alt="Ciclo: recon, brief, direção, sistema, construir, ver, criticar, endurecer, gate" width="100%"></p>
+<p align="center"><img src="docs/images/craft-loop.png" alt="Ciclo: recon, brief, direção, sistema, construir, ver, criticar, endurecer, gate" width="100%"></p>
 
 Todo modo executa uma parte desse ciclo. O passo central é **Ver**: o agente renderiza previews do Compose, captura o aparelho via adb ou usa o Maestro MCP, e revisa os pixels com uma rubrica de 10 dimensões. Revisão de código nunca é chamada de revisão visual. Os ciclos de correção param depois de duas passadas e reportam o que sobrou.
 
 ## Direção visual: 10 âncoras
 
-<p align="center"><img src="docs/images/anchors.svg" alt="Dez âncoras estéticas com paletas" width="100%"></p>
+<p align="center"><img src="docs/images/anchors.png" alt="Dez âncoras estéticas com paletas" width="100%"></p>
 
 "Deixa limpo e moderno" produz a média dos dados de treino. Em vez disso, o agente escolhe **uma âncora** a partir do domínio do produto (finanças, saúde, mídia, B2B, infantil...) e ela decide cor, tipografia, forma, densidade, elevação e motion. Cada âncora documenta sua marca registrada e a armadilha que a estraga.
 
@@ -92,7 +92,7 @@ Todo modo executa uma parte desse ciclo. O passo central é **Ver**: o agente re
 
 Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dispositivos muda configurações do aparelho temporariamente e restaura).
 
-<p align="center"><img src="docs/images/lint-output.svg" alt="Saída real do lint no app de exemplo" width="100%"></p>
+<p align="center"><img src="docs/images/lint-output.png" alt="Resumo ilustrativo dos achados do lint no app de exemplo" width="100%"></p>
 
 | Script | Faz |
 |---|---|
@@ -105,7 +105,7 @@ Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dis
 | `review_gate.py` | Valida o relatório de evidências e devolve `blocked` / `incomplete` / `ready_for_visual_review` / `verified_for_scope` |
 | `validate_skill.py` | Autochecagem contra a especificação Agent Skills |
 
-<p align="center"><img src="docs/images/device-matrix.svg" alt="Perfis da matriz de dispositivos" width="100%"></p>
+<p align="center"><img src="docs/images/device-matrix.png" alt="Perfis da matriz de dispositivos" width="100%"></p>
 
 ## O que tem dentro
 

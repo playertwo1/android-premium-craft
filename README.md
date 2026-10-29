@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/hero.svg" alt="Android Premium Craft - design, build, critique and verify Android UI with evidence, not vibes" width="100%">
+  <img src="docs/images/hero.png" alt="Android Premium Craft - design, build, critique and verify Android UI with evidence, not vibes" width="100%">
 </p>
 
 <p align="center">
@@ -42,7 +42,7 @@ It gives the agent three things it does not have on its own:
 
 ## Before and after
 
-<p align="center"><img src="docs/images/before-after.svg" alt="Left: typical AI-generated Android home screen with purple gradient, greeting banner, emoji tiles, nested cards and spinner. Right: the same screen with one hero fact, one primary action, list layout and tonal dark theme." width="100%"></p>
+<p align="center"><img src="docs/images/before-after.png" alt="Left: typical AI-generated Android home screen with purple gradient, greeting banner, emoji tiles, nested cards and spinner. Right: the same screen with one hero fact, one primary action, list layout and tonal dark theme." width="100%"></p>
 
 The left screen is what agents tend to produce: the Material sample purple, a greeting that eats the first viewport, three equal emoji tiles, cards inside cards, 10sp gray text and a blocking spinner. The right one applies the skill: one hero fact with sign and freshness, one primary action, a list with right-aligned tabular amounts, theme roles verified for contrast and a labeled navigation bar. Every problem on the left maps to a lint rule.
 
@@ -142,7 +142,7 @@ Never overwrites an existing install unless you pass `--replace`.
 
 ## The craft loop
 
-<p align="center"><img src="docs/images/craft-loop.svg" alt="Craft loop: Recon, Brief, Direction, System, Build, See, Critique, Harden, Gate, with a feedback loop from Harden back to See" width="100%"></p>
+<p align="center"><img src="docs/images/craft-loop.png" alt="Craft loop: Recon, Brief, Direction, System, Build, See, Critique, Harden, Gate, with a feedback loop from Harden back to See" width="100%"></p>
 
 Every mode runs a slice of this loop. The important part is **See**: the agent renders Compose previews, captures the device with adb, or uses the Maestro MCP, then reviews the pixels against a 10-dimension rubric. Code review alone is never called visual review. Repair loops stop after two passes and report what remains.
 
@@ -173,7 +173,7 @@ Personas used in the walkthrough: **Casey** (one hand, on the bus), **Sam** (Tal
 
 ## Visual direction: 10 anchors
 
-<p align="center"><img src="docs/images/anchors.svg" alt="Ten aesthetic anchors: Quiet Utility, Tonal Calm, Expressive Material, Editorial, Precision Pro, Immersive Media, Warm Organic, Bold Brand, Playful, Glanceable" width="100%"></p>
+<p align="center"><img src="docs/images/anchors.png" alt="Ten aesthetic anchors: Quiet Utility, Tonal Calm, Expressive Material, Editorial, Precision Pro, Immersive Media, Warm Organic, Bold Brand, Playful, Glanceable" width="100%"></p>
 
 "Make it clean and modern" produces the average of the training data. Instead the agent picks **one anchor** from the product's domain register (finance, health, media, B2B, kids...) and lets it decide color, type, shape, density, elevation and motion. Each anchor documents its signature move and the trap that ruins it. Details: [`aesthetic-anchors.md`](skills/android-premium-craft/modules/02-direction/aesthetic-anchors.md) and [`anti-slop.md`](skills/android-premium-craft/modules/02-direction/anti-slop.md).
 
@@ -183,7 +183,7 @@ All scripts are Python 3.9+ with the standard library only. They never modify yo
 
 ### Craft lint - 39 rules
 
-<p align="center"><img src="docs/images/lint-output.svg" alt="Terminal output of ui_audit.py lint on the sloppy fixture app showing high and medium findings" width="100%"></p>
+<p align="center"><img src="docs/images/lint-output.png" alt="Illustrative summary of ui_audit.py lint findings on the sloppy fixture app" width="100%"></p>
 
 ```bash
 python scripts/ui_audit.py lint /path/to/app                    # Markdown report
@@ -260,7 +260,7 @@ python scripts/ui_audit.py contrast '#B3FFFFFF' '#121316'    # alpha is composit
 
 ### Device matrix
 
-<p align="center"><img src="docs/images/device-matrix.svg" alt="Six phone frames showing baseline, dark, font 200 percent, RTL, three-button navigation and landscape profiles" width="100%"></p>
+<p align="center"><img src="docs/images/device-matrix.png" alt="Six phone frames showing baseline, dark, font 200 percent, RTL, three-button navigation and landscape profiles" width="100%"></p>
 
 ```bash
 python scripts/device_matrix.py --list
