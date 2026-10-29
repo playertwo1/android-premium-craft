@@ -5,7 +5,7 @@
 **Architecture**
 - SKILL.md rewritten as a 167-line router (principles, craft loop, 24 modes, module index, official-skill hand-offs).
 - 30 modules in 11 groups (discover, direction, system, layout, components, motion, accessibility, performance, verify, platforms, agents) + research ledger. All links one level deep; long files have a Contents section.
-- Repository layout for plugin marketplaces (`.claude-plugin/`, `.codex-plugin/`) and CI.
+- Repository layout for plugin marketplaces (`.claude-plugin/`, `.codex-plugin/`).
 
 **New knowledge**
 - 10 named aesthetic anchors; Android anti-slop catalogue with lint ids; squint test.

@@ -45,7 +45,7 @@ Lista completa e datada: `skills/android-premium-craft/research/sources.md`; o q
 | Probe | AGP | SDKs, BOM, Material 3, Kotlin, bibliotecas, Compose/Views/híbrido, flags do manifest, obrigações da plataforma |
 | Gate de release | 7 checagens | v2 com `states`, `adaptive`, `not_applicable`, issues P0-P3, decisões `blocked`/`incomplete`/`ready_for_visual_review`/`verified_for_scope`; aceita relatórios v1 |
 | Crítica | "≤ 5 problemas" | Rubrica de 10 dimensões com âncoras 0-4 (perfil, nunca média), severidade, formato de relatório |
-| Distribuição | instalador por projeto | + manifestos de plugin Claude/Codex, Antigravity, snippet sempre ativo para `AGENTS.md`, CI |
+| Distribuição | instalador por projeto | + manifestos de plugin Claude/Codex, Antigravity, snippet sempre ativo para `AGENTS.md` |
 | Prova | 3 arquivos de teste | **42 testes**, 9 cenários de eval (incluindo um negativo), app-fixture "desleixado", validador da especificação |
 
 ## 5. Sobre o "300% melhor"

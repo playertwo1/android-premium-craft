@@ -3,7 +3,6 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/playertwo1/android-premium-craft/actions/workflows/ci.yml"><img alt="CI" src="https://github.com/playertwo1/android-premium-craft/actions/workflows/ci.yml/badge.svg"></a>
   <img alt="Agent Skills spec" src="https://img.shields.io/badge/Agent%20Skills-spec%20compliant-80D5D4?labelColor=0E1514">
   <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B%20stdlib%20only-80D5D4?labelColor=0E1514">
   <img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-80D5D4?labelColor=0E1514">
