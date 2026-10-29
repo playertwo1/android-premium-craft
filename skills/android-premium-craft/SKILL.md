@@ -3,7 +3,7 @@ name: android-premium-craft
 description: Designs, builds, critiques and verifies native Android app interfaces to a premium, release-ready standard - visual direction and design tokens, Material 3 and M3 Expressive, Jetpack Compose and XML Views, layout, adaptive and edge-to-edge, touch, accessibility, motion, haptics, UX copy, screen states, performance, and screenshot or device-matrix verification with honest evidence. Use when creating or redesigning an Android screen, theme or design system; reviewing screenshots or Compose/XML code for UI quality; making an app look less generic or more polished; fixing insets, tap targets, TalkBack, font scaling, dark theme, tablets, foldables, animation or jank; or preparing a UI release review. Not for backend, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.0.0"
+  version: "2.1.0"
   updated: "2026-10-29"
 ---
 
@@ -29,7 +29,7 @@ This file is a router. Load only the modules the current mode needs (links below
 6. **States before screenshots.** Design loading, empty, error, offline, partial, permission and long-content states with the happy path, not after it.
 7. **Motion must earn its frame.** Use the theme `MotionScheme` springs, keep it interruptible, respect reduced motion, never block input. Claim smoothness only with a same-device measurement.
 8. **See what you built.** Render previews or capture the device, look at the pixels, critique against the rubric, fix, repeat. Code review alone is not visual review.
-9. **Evidence vocabulary.** Report each claim as `observed`, `verified-in-code`, `measured`, `automated-pass` or `not-run`. No invented FPS, scores or test results.
+9. **Evidence vocabulary.** Report each claim as `observed`, `verified-in-code`, `measured`, `automated-pass` or `not-run`. No invented FPS or test results; scores come only from evidence-backed rubric judgments run through `critique_score.py`.
 
 ## The craft loop
 
@@ -42,7 +42,7 @@ Copy this checklist into the work log and tick it off. Skip steps the mode does 
 - [ ] 3 System    tokens: color/type/shape/space/motion -> modules/03-system/*
 - [ ] 4 Build     layout, components, states, copy    -> modules/04-layout/*, 05-components/*
 - [ ] 5 See       render or capture, look at pixels   -> modules/09-verify/visual-feedback-loop.md
-- [ ] 6 Critique  rubric, max 5 prioritized findings  -> modules/09-verify/critique-rubric.md
+- [ ] 6 Critique  Craft Score, top 5 findings         -> modules/09-verify/master-critique.md
 - [ ] 7 Harden    a11y, matrix, edge cases, motion    -> modules/07-accessibility, 09-verify/device-matrix.md
 - [ ] 8 Gate      evidence JSON + review_gate.py      -> modules/09-verify/release-gates.md
 ```
@@ -53,7 +53,7 @@ Feedback rule: after step 5 or 7 finds a P0/P1, fix and repeat from step 5. Stop
 
 | Mode | Purpose | Load | Edits |
 |---|---|---|---|
-| `critique` (default) | 2 strengths + up to 5 prioritized findings with evidence and one direction | critique-rubric, anti-slop | No |
+| `critique` (default) | Master critique: Craft Score 0-100 + scorecard, top 3-5 issues, persona red flags, quick wins, action plan. `critique quick`: 2 strengths + 5 findings, no score | master-critique, critique-rubric, anti-slop | No |
 | `shape` | Brief + anchor + token proposal before any code | product-brief, aesthetic-anchors, 03-system | No |
 | `system` | Create or document the design system (`DESIGN.md` + theme code) | 03-system, tokens-and-theming | On request |
 | `build` | New screen or flow from an approved direction | 04, 05, states, visual loop | Yes |
@@ -119,7 +119,8 @@ Typical chains: new app `shape -> system -> build -> see -> harden -> release-re
 - [visual-feedback-loop.md](modules/09-verify/visual-feedback-loop.md) - how to see the UI and self-critique
 - [device-matrix.md](modules/09-verify/device-matrix.md) - stress configurations and capture script
 - [screenshot-testing.md](modules/09-verify/screenshot-testing.md) - tool choice by version, baseline hygiene
-- [critique-rubric.md](modules/09-verify/critique-rubric.md) - 10 dimensions, severity, report format
+- [master-critique.md](modules/09-verify/master-critique.md) - score an existing app like a design director: capture, review, scan, Craft Score, plan
+- [critique-rubric.md](modules/09-verify/critique-rubric.md) - 10 dimensions, scoring anchors, severity
 - [release-gates.md](modules/09-verify/release-gates.md) - evidence JSON, decision levels
 
 **10 Platforms**
@@ -156,6 +157,7 @@ python scripts/ui_audit.py lint <app> --format markdown          # 39 craft rule
 python scripts/ui_audit.py palette <app>                        # theme role pairs vs WCAG contrast
 python scripts/ui_audit.py contrast '#B3FFFFFF' '#121316'        # supports #AARRGGBB over a background
 python scripts/device_matrix.py --out shots/ --profiles core     # adb stress capture; restores settings
+python scripts/critique_score.py critique.json --save .craft/critique  # Craft Score 0-100 + trend
 python scripts/review_gate.py evidence.json --require-ready      # lints the evidence report
 python scripts/validate_skill.py                                 # self-check of this skill
 ```

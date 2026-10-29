@@ -19,8 +19,8 @@
 Ela dá ao agente três coisas que ele não tem sozinho:
 
 1. **Decisões** - dez direções visuais com nome, um sistema de tokens de design e um catálogo "anti-slop", para o resultado parar de parecer com todo app gerado por IA.
-2. **Conhecimento de ofício** - 30 módulos sobre Material 3 / Expressive, layout, edge-to-edge, telas grandes, componentes, formulários, estados, textos, motion, acessibilidade e performance, atualizados com as regras do Android 16/17.
-3. **Como conferir o próprio trabalho** - lint com 39 regras, checagem de contraste do tema, captura em matriz de dispositivos que restaura o aparelho e um gate de release honesto. Sem FPS inventado, sem nota de mentira.
+2. **Conhecimento de ofício** - 31 módulos sobre Material 3 / Expressive, layout, edge-to-edge, telas grandes, componentes, formulários, estados, textos, motion, acessibilidade e performance, atualizados com as regras do Android 16/17.
+3. **Como conferir o próprio trabalho** - critique mestre com nota de 0 a 100, lint com 39 regras, checagem de contraste do tema, captura em matriz de dispositivos que restaura o aparelho e um gate de release honesto. Sem FPS inventado, sem nota de mentira.
 
 ## Antes e depois
 
@@ -31,7 +31,7 @@ Ela dá ao agente três coisas que ele não tem sozinho:
 ## Começo rápido
 
 ```text
-/android-premium-craft critique a tela inicial          # revisão sem editar
+/android-premium-craft critique meu app                 # nota 0-100 + o que melhorar
 /android-premium-craft shape um painel de fluxo de caixa # direção antes do código
 /android-premium-craft redesign a tela inicial seguindo o DESIGN.md
 /android-premium-craft see                              # renderizar/capturar e autocriticar
@@ -54,6 +54,28 @@ No Codex use `$android-premium-craft ...`; no Antigravity e no Hermes a skill vi
 
 **Recomendado:** cole [`AGENTS_SNIPPET.md`](skills/android-premium-craft/assets/AGENTS_SNIPPET.md) no `AGENTS.md` / `CLAUDE.md` do app. Agentes ignoram skills instaladas com mais frequência do que se imagina; o snippet mantém as regras principais sempre ativas.
 
+## Critique mestre: nota para o seu app
+
+Aponte a skill para um app que você já tem e ela revisa como um diretor de design: captura as telas principais (aparelho, Maestro ou previews), escreve a revisão de design **antes** de olhar o lint (para a ferramenta não enviesar o julgamento), cruza os dois e devolve uma **Craft Score de 0 a 100** com scorecard, os 3-5 problemas que mais importam, alertas por persona, ganhos rápidos e um plano de ação com os modos da skill.
+
+```text
+/android-premium-craft critique meu app
+/android-premium-craft critique quick a tela de checkout   # sem nota, 5 achados
+```
+
+<p align="center"><img src="docs/images/critique-scorecard.svg" alt="Scorecard da Craft Score" width="100%"></p>
+
+Como a nota é calculada (`scripts/critique_score.py`, então o mesmo julgamento sempre dá a mesma nota):
+
+- **10 dimensões de 0 a 4**, com pesos: hierarquia 14, acessibilidade 12, layout/tipografia/consistência/estados/toque 10, cor/plataforma/motion 8.
+- **Evidência obrigatória** em cada nota (screenshot, `arquivo:linha` ou medição); `n/a` exige motivo e renormaliza.
+- **Telas das jornadas principais valem o dobro.**
+- **Tetos:** qualquer P0 aberto limita a nota a 49; dois ou mais P1 a 74; um P1 a 84.
+- **Confiança** alta/média/baixa conforme quanto foi julgado olhando pixels, não código.
+- **Faixas:** 90+ S Premium · 80 A Polished · 70 B Solid · 55 C Generic · 40 D Rough · abaixo de 40 E Broken.
+- **Evolução:** `--save .craft/critique` guarda cada rodada e mostra `48D -> 63C -> 81A`.
+- **Personas:** Casey (uma mão, no ônibus), Sam (TalkBack + 200%), Rita (65 anos, primeiro app), Alex (tablet, usuário avançado), Riley (testa limites).
+
 ## O ciclo de ofício
 
 <p align="center"><img src="docs/images/craft-loop.svg" alt="Ciclo: recon, brief, direção, sistema, construir, ver, criticar, endurecer, gate" width="100%"></p>
@@ -74,6 +96,7 @@ Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dis
 
 | Script | Faz |
 |---|---|
+| `critique_score.py` | Calcula a Craft Score 0-100, scorecard e evolução entre rodadas |
 | `ui_audit.py lint` | 39 regras (acessibilidade, insets, back, cores, tipografia, performance, slop), saída Markdown/JSON/SARIF, `--fail-on high` para CI |
 | `ui_audit.py palette` | Contraste WCAG de todos os pares de papéis do tema |
 | `ui_audit.py contrast` | Contraste com cor translúcida (`#AARRGGBB`) |
@@ -89,18 +112,18 @@ Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dis
 ```
 skills/android-premium-craft/
 ├── SKILL.md              roteador de 167 linhas: princípios, ciclo, modos, índice
-├── modules/              30 módulos em 11 grupos, carregados só quando o modo precisa
+├── modules/              31 módulos em 11 grupos, carregados só quando o modo precisa
 ├── research/             evidências (o que é prova vs. opinião) e fontes datadas
 ├── assets/compose/       CraftTheme.kt · CraftPreviews.kt · A11yCheckTest.kt
-├── assets/               DESIGN_TEMPLATE.md · REVIEW_EVIDENCE_TEMPLATE.json · AGENTS_SNIPPET.md
-├── scripts/              ui_audit · project_probe · device_matrix · review_gate · install · validate
+├── assets/               DESIGN_TEMPLATE.md · CRITIQUE_TEMPLATE.json · REVIEW_EVIDENCE_TEMPLATE.json · AGENTS_SNIPPET.md
+├── scripts/              ui_audit · critique_score · project_probe · device_matrix · review_gate · install · validate
 ├── evals/                9 cenários + um app de exemplo propositalmente ruim
-└── tests/                42 testes unitários
+└── tests/                51 testes unitários
 ```
 
 ## Evidência, não impressão
 
-Toda afirmação num relatório recebe um status: `observed`, `verified-in-code`, `measured`, `automated-pass` ou `not-run`. A rubrica gera um perfil (`H3 L3 T2 ...`), nunca uma "nota premium" média. Ganho de performance exige medição no mesmo aparelho com build release. O gate de release só confere o relatório; ele nunca finge ter rodado o seu app.
+Toda afirmação num relatório recebe um status: `observed`, `verified-in-code`, `measured`, `automated-pass` ou `not-run`. A Craft Score é calculada por script, com pesos e tetos publicados e nível de confiança, e nunca é apresentada como medição. Ganho de performance exige medição no mesmo aparelho com build release. O gate de release só confere o relatório; ele nunca finge ter rodado o seu app.
 
 ## Perguntas frequentes
 

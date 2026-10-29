@@ -35,7 +35,9 @@ Score each 0-4 only from evidence you have (screenshot, code, measurement). Mark
 | 3 | Good: intentional, consistent, few nits |
 | 4 | Excellent: distinctive and flawless for this job, holds under stress profiles |
 
-"Premium" means: no dimension below 3, and dimensions 1, 6, 7, 8 at 3+ under the `core` device matrix. Present the scores as a profile (e.g., `H3 L3 T2 C3 S2 St1 To3 A2 P3 M3`), never as an averaged "premium score".
+"Premium" means: no dimension below 3, and dimensions 1, 6, 7, 8 at 3+ under the `core` device matrix.
+
+Quick critiques present the scores as a profile (e.g., `H3 L3 T2 C3 S2 St1 To3 A2 P3 M3`). Full critiques turn them into the **Craft Score (0-100)** with `scripts/critique_score.py`: published weights, caps for open P0/P1, and a confidence level from how much was judged from pixels. Never compute the number by hand and never present it as a measurement. Procedure: [master-critique.md](master-critique.md).
 
 ## Severity
 

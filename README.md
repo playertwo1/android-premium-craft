@@ -20,8 +20,8 @@
 It gives the agent three things it does not have on its own:
 
 1. **Decisions** - ten named visual directions, a design-token system and an anti-slop catalogue, so the output stops looking like every other generated app.
-2. **Craft knowledge** - 30 focused modules on Material 3 / Expressive, layout, edge-to-edge, adaptive, components, forms, states, copy, motion, accessibility and performance, up to date with Android 16/17 platform rules.
-3. **Ways to check its own work** - a 39-rule lint, a theme-contrast checker, a device-matrix capture that restores your phone, and an honest release gate. No invented FPS, no fake scores.
+2. **Craft knowledge** - 31 focused modules on Material 3 / Expressive, layout, edge-to-edge, adaptive, components, forms, states, copy, motion, accessibility and performance, up to date with Android 16/17 platform rules.
+3. **Ways to check its own work** - a master critique with a 0-100 Craft Score, a 39-rule lint, a theme-contrast checker, a device-matrix capture that restores your phone, and an honest release gate. No invented FPS, no fake scores.
 
 ## Contents
 
@@ -30,6 +30,7 @@ It gives the agent three things it does not have on its own:
 - [Install](#install)
 - [Modes](#modes)
 - [The craft loop](#the-craft-loop)
+- [Master critique: score your app](#master-critique-score-your-app)
 - [Visual direction: 10 anchors](#visual-direction-10-anchors)
 - [Tools](#tools)
 - [Example session](#example-session)
@@ -124,7 +125,7 @@ Never overwrites an existing install unless you pass `--replace`.
 
 | Group | Mode | What you get | Edits code? |
 |---|---|---|---|
-| Review | `critique` *(default)* | 2 strengths, up to 5 prioritized findings with evidence, one direction | No |
+| Review | `critique` *(default)* | Craft Score 0-100, scorecard, top issues, persona red flags, quick wins, action plan (`critique quick` for a short version) | No |
 | | `audit` | Probe + lint + palette + rubric, ranked report | No |
 | | `accessibility` | TalkBack, 200% text, targets, contrast, keyboard - automated and manual separated | No unless asked |
 | Plan | `shape` | Brief, anchor and token proposal before any code | No |
@@ -144,6 +145,31 @@ Never overwrites an existing install unless you pass `--replace`.
 <p align="center"><img src="docs/images/craft-loop.svg" alt="Craft loop: Recon, Brief, Direction, System, Build, See, Critique, Harden, Gate, with a feedback loop from Harden back to See" width="100%"></p>
 
 Every mode runs a slice of this loop. The important part is **See**: the agent renders Compose previews, captures the device with adb, or uses the Maestro MCP, then reviews the pixels against a 10-dimension rubric. Code review alone is never called visual review. Repair loops stop after two passes and report what remains.
+
+## Master critique: score your app
+
+Point the skill at an app you already have and it reviews it like a design director: captures the main screens (device, Maestro or previews), writes the design review **before** looking at the lint so the tool does not anchor the judgment, reconciles both, and returns a **Craft Score from 0 to 100** with a scorecard, the 3-5 issues that matter most, persona red flags, quick wins and an action plan made of this skill's modes.
+
+```text
+/android-premium-craft critique my app
+/android-premium-craft critique quick the checkout screen   # no score, 5 findings
+```
+
+<p align="center"><img src="docs/images/critique-scorecard.svg" alt="Craft Score scorecard: dial with 30 out of 100, grade E Broken, and bars for ten dimensions" width="100%"></p>
+
+How the number is made (`scripts/critique_score.py`, so the same judgments always give the same score):
+
+| | |
+|---|---|
+| **Ten dimensions, 0-4 each** | Hierarchy 14 · Accessibility 12 · Layout, Typography, Consistency, States, Touch 10 each · Color, Platform, Motion 8 each |
+| **Evidence required** | Every score points to a screenshot, `file:line` or measurement; `n/a` needs a reason and renormalizes |
+| **Primary journeys count double** | Each screen is scored; the app score is the weighted average |
+| **Caps** | Any open P0 caps the app at 49, two or more P1 at 74, one P1 at 84 - a pretty screen that blocks a task is not "polished" |
+| **Confidence** | High / medium / low from how much of the weight was judged from pixels instead of code |
+| **Bands** | 90+ S Premium · 80 A Polished · 70 B Solid · 55 C Generic · 40 D Rough · below 40 E Broken |
+| **Trend** | `--save .craft/critique` archives each run and prints `48D -> 63C -> 81A` |
+
+Personas used in the walkthrough: **Casey** (one hand, on the bus), **Sam** (TalkBack + 200% text), **Rita** (65, first app), **Alex** (tablet power user) and **Riley** (stress tester).
 
 ## Visual direction: 10 anchors
 
@@ -259,10 +285,12 @@ The probe turns `targetSdk` into concrete obligations (edge-to-edge at 35, predi
 <summary><code>/android-premium-craft critique</code> on the bundled sloppy app</summary>
 
 ```markdown
-## Critique - Home (code review, no device available)
+Method: design review + deterministic scan (code only, no device)
+
+## Critique - Home
 
 Direction check: no anchor; reads as the Material sample template.
-Rubric: H1 L2 T1 C1 S1 St1 To2 A1 P1 M2 (evidence: HomeScreen.kt, lint run)
+Craft Score: 30/100 - E (Broken) · confidence: low (code only, 0% from pixels)
 
 Strengths
 1. Compose + Material 3 already in place; theme can be fixed centrally.
@@ -302,15 +330,15 @@ flowchart LR
 ```
 skills/android-premium-craft/
 ├── SKILL.md              167-line router: principles, craft loop, modes, module index
-├── modules/              30 modules in 11 groups, loaded only when a mode needs them
+├── modules/              31 modules in 11 groups, loaded only when a mode needs them
 ├── research/             evidence ledger (what is proven vs opinion) and dated sources
 ├── assets/
 │   ├── compose/          CraftTheme.kt · CraftPreviews.kt · A11yCheckTest.kt
-│   ├── DESIGN_TEMPLATE.md · REFERENCE_BRIEF_TEMPLATE.md · REVIEW_EVIDENCE_TEMPLATE.json
+│   ├── DESIGN_TEMPLATE.md · CRITIQUE_TEMPLATE.json · REVIEW_EVIDENCE_TEMPLATE.json
 │   └── AGENTS_SNIPPET.md
-├── scripts/              ui_audit · project_probe · device_matrix · review_gate · install · validate
+├── scripts/              ui_audit · critique_score · project_probe · device_matrix · review_gate · install · validate
 ├── evals/                9 scenarios + a deliberately sloppy fixture app
-└── tests/                42 unit tests
+└── tests/                51 unit tests
 ```
 
 The Compose templates are ready to copy: [`CraftTheme.kt`](skills/android-premium-craft/assets/compose/CraftTheme.kt) (light/dark schemes, extended success/warning roles, spacing tokens, tabular numerals - passes its own contrast check), [`CraftPreviews.kt`](skills/android-premium-craft/assets/compose/CraftPreviews.kt) (light/dark, 200% text, RTL, landscape, one preview per UI state) and [`A11yCheckTest.kt`](skills/android-premium-craft/assets/compose/A11yCheckTest.kt).
@@ -330,7 +358,7 @@ Google's [android/skills](https://github.com/android/skills) cover specific migr
 
 ## Evidence, not vibes
 
-Every claim in a report carries one of: `observed`, `verified-in-code`, `measured`, `automated-pass`, `not-run`. The rubric produces a profile (`H3 L3 T2 ...`), never an averaged "premium score". Performance claims require a same-device, release-build measurement. The release gate only lints the report; it never pretends to have run your app. Research is kept in an [evidence ledger](skills/android-premium-craft/research/evidence.md) that separates platform rules, studies (e.g. the CHI '26 M3 Expressive study) and community anecdotes.
+Every claim in a report carries one of: `observed`, `verified-in-code`, `measured`, `automated-pass`, `not-run`. The Craft Score is computed by a script with published weights and caps, carries a confidence level and is never presented as a measurement. Performance claims require a same-device, release-build measurement. The release gate only lints the report; it never pretends to have run your app. Research is kept in an [evidence ledger](skills/android-premium-craft/research/evidence.md) that separates platform rules, studies (e.g. the CHI '26 M3 Expressive study) and community anecdotes.
 
 ## FAQ
 
@@ -351,7 +379,7 @@ The best contribution is a real failure: the prompt, the model, what the agent d
 ```bash
 cd skills/android-premium-craft
 python scripts/validate_skill.py           # Agent Skills spec + internal links
-python -m unittest discover -s tests -v    # 42 tests
+python -m unittest discover -s tests -v    # 51 tests
 ```
 
 See [CHANGELOG.md](CHANGELOG.md) and the v1.2 to v2.0 write-up in [IMPROVEMENTS.md](IMPROVEMENTS.md) (Portuguese).

@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.1.0 - 2026-10-29
+
+- **Master critique** (`critique` mode at full depth): capture -> design review before tools -> deterministic scan -> Craft Score -> report -> targeted questions -> action plan. New module `modules/09-verify/master-critique.md` with Android personas (Casey, Sam, Rita, Alex, Riley) and a cognitive-load / Nielsen cross-check.
+- New `scripts/critique_score.py`: Craft Score 0-100 from evidence-backed rubric scores, published weights, P0/P1 caps, confidence from visual coverage, grade bands, archive and trend (`--save`).
+- New `assets/CRITIQUE_TEMPLATE.json`; `critique quick` keeps the short version.
+- README scorecard image generated from real script output; 51 tests.
+
 ## v2.0.0 - 2026-10-29
 
 **Architecture**

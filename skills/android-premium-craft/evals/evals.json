@@ -1,20 +1,29 @@
 [
   {
     "id": "critique-sloppy-home",
-    "skills": ["android-premium-craft"],
-    "query": "Review the home screen of this app. What should I fix first? Don't change code.",
-    "files": ["evals/fixtures/sloppy-app/"],
+    "skills": [
+      "android-premium-craft"
+    ],
+    "query": "Give my app a score and tell me what to improve, like a senior frontend reviewer. Don't change code.",
+    "files": [
+      "evals/fixtures/sloppy-app/"
+    ],
     "expected_behavior": [
-      "Runs project recon (probe and/or lint) or reads Gradle/manifest before giving opinions",
-      "Reports at most 5 prioritized findings with file:line evidence and severity P0-P3",
-      "Flags Scaffold innerPadding ignored, IconButton without a name and onBackPressed being ignored at targetSdk 36",
-      "Mentions the portrait lock / non-resizable activity conflicts with large-screen behavior at SDK 36+",
-      "Does not edit any file and marks visual/device checks as not-run when no screenshot or device is available"
+      "Starts the report with a Method line that states the evidence route (device, previews or code only)",
+      "Writes the design review before using lint/palette output, then reconciles agreements, additions and false positives",
+      "Fills the critique JSON and reports the Craft Score from critique_score.py with grade, confidence and scorecard",
+      "Lists 3-5 priority issues naming exact elements with why it matters, evidence (file:line), concrete fix and the mode to run",
+      "Flags Scaffold innerPadding ignored, the unlabeled IconButton and onBackPressed being ignored at targetSdk 36",
+      "Includes persona red flags (e.g. one-handed user, TalkBack user) and quick wins",
+      "Marks visual checks as not verified when no screenshot or device was available, and does not edit code",
+      "Ends with 2-3 targeted questions with concrete options, followed by an action plan after the answers"
     ]
   },
   {
     "id": "shape-finance-dashboard",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "I'm starting a cash-flow app for small business owners. Propose the visual direction for the main dashboard before we write code.",
     "files": [],
     "expected_behavior": [
@@ -27,9 +36,14 @@
   },
   {
     "id": "build-settings-screen",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "Build the notification settings screen in Compose following our DESIGN.md.",
-    "files": ["assets/compose/CraftTheme.kt", "assets/DESIGN_TEMPLATE.md"],
+    "files": [
+      "assets/compose/CraftTheme.kt",
+      "assets/DESIGN_TEMPLATE.md"
+    ],
     "expected_behavior": [
       "Uses theme roles and spacing tokens only; no hex colors or raw fontSize in the screen",
       "Uses list-based layout with switches exposing role and state; 48dp targets",
@@ -40,9 +54,13 @@
   },
   {
     "id": "less-generic",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "My app looks like every AI-generated app. Make it look premium.",
-    "files": ["evals/fixtures/sloppy-app/"],
+    "files": [
+      "evals/fixtures/sloppy-app/"
+    ],
     "expected_behavior": [
       "Identifies concrete slop patterns (baseline purple, gradient hero, nested cards, greeting banner, emoji icon, all caps)",
       "Runs or describes the squint test and the attention budget for the first viewport",
@@ -52,9 +70,13 @@
   },
   {
     "id": "no-fake-fps",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "The transactions list stutters. Fix it and tell me how many FPS we gain.",
-    "files": ["evals/fixtures/sloppy-app/"],
+    "files": [
+      "evals/fixtures/sloppy-app/"
+    ],
     "expected_behavior": [
       "Refuses to state FPS or gains without a same-device measurement",
       "Proposes a baseline with Macrobenchmark FrameTimingMetric on a release build before changing code",
@@ -64,9 +86,13 @@
   },
   {
     "id": "release-review-no-device",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "Do the release review for the redesigned home screen. There's no emulator on this machine.",
-    "files": ["assets/REVIEW_EVIDENCE_TEMPLATE.json"],
+    "files": [
+      "assets/REVIEW_EVIDENCE_TEMPLATE.json"
+    ],
     "expected_behavior": [
       "Fills the evidence JSON with not_run plus reasons for device-dependent checks",
       "Runs review_gate.py and reports the decision (incomplete or ready_for_visual_review), not production-ready",
@@ -75,9 +101,13 @@
   },
   {
     "id": "adapt-tablet",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "Our app looks stretched on tablets. What do we do?",
-    "files": ["evals/fixtures/sloppy-app/"],
+    "files": [
+      "evals/fixtures/sloppy-app/"
+    ],
     "expected_behavior": [
       "Uses window size classes (compact/medium/expanded) rather than device checks",
       "Recommends navigation rail via NavigationSuiteScaffold and list-detail where content fits",
@@ -88,9 +118,13 @@
   },
   {
     "id": "accessibility-audit",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "Is the home screen accessible?",
-    "files": ["evals/fixtures/sloppy-app/"],
+    "files": [
+      "evals/fixtures/sloppy-app/"
+    ],
     "expected_behavior": [
       "Separates automated findings from manual checks and says TalkBack was not run if it was not",
       "Flags the unnamed icon button, the 24dp clickable box, the 10sp text, alpha-faded text and the dp text size",
@@ -100,7 +134,9 @@
   },
   {
     "id": "negative-backend",
-    "skills": ["android-premium-craft"],
+    "skills": [
+      "android-premium-craft"
+    ],
     "query": "Add retry with exponential backoff to our Retrofit client.",
     "files": [],
     "expected_behavior": [
