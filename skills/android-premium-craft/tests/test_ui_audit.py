@@ -12,6 +12,19 @@ from ui_audit import (RULES, as_markdown, contrast_ratio, lint, lint_markdown, l
 FIXTURE = ROOT / 'evals' / 'fixtures' / 'sloppy-app'
 
 
+class HypeCopyTests(unittest.TestCase):
+    def ids(self, text, suffix):
+        return {f.rule for f in lint_text(text, 'app/src/main/x' + suffix, suffix)}
+
+    def test_flags_generated_copy(self):
+        self.assertIn('D011', self.ids('Text("Unlock seamless banking")', '.kt'))
+        self.assertIn('D011', self.ids('<string name="err">Oops! Something went wrong</string>', '.xml'))
+
+    def test_plain_copy_passes(self):
+        self.assertNotIn('D011', self.ids('Text("Pay R$ 40 to Ana")', '.kt'))
+        self.assertNotIn('D011', self.ids('val elevated = Modifier.elevation(2.dp)', '.kt'))
+
+
 class ContrastTests(unittest.TestCase):
     def test_white_black(self):
         self.assertAlmostEqual(contrast_ratio('#ffffff', '#000000'), 21.0, places=5)

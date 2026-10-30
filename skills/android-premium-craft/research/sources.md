@@ -59,6 +59,10 @@
 - compose-skill / compose-expert (source-grounded Compose references): https://github.com/aldefy/compose-skill
 - yschimke/skills (render Compose previews for agents, design parity review): https://github.com/yschimke/skills
 - ui-design-skills (named anchors, ban patterns, verification checklist): https://github.com/rshzrh/ui-design-skills
+- taste-skill, MIT (dated tells registry, critique passes and fix order, hype-copy list): https://github.com/Leonxlnx/taste-skill
+- Hallmark, MIT (gate tiers and waivers, brand-truth protocol, fresh-context finish review): https://github.com/Nutlope/hallmark
+- UI/UX Pro Max, MIT (per-stack guideline data with docs URLs and verification dates): https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+- diagram-design, MIT (ADRs for skill decisions, SKILL.md size cap, accessible SVG contract): https://github.com/cathrynlavery/diagram-design
 
 ## Community discussions
 

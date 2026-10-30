@@ -1,5 +1,13 @@
 # Changelog
 
+## v2.2.0 - 2026-10-30
+
+Ideas adapted from five MIT-licensed design skills (credited in `research/sources.md`).
+- New lint rule **D011** (hype copy: unlock, seamless, supercharge, "Oops"...) for Kotlin, layouts and `strings.xml`; 40 rules.
+- `anti-slop.md`: dated 2025-2026 tells in Android form (warm-editorial shortcut, eyebrow labels, pill badges, accented word, mono as costume, index numbering, decorative status dots, fake dashboards, invented proof) and the "removal is not enough" rule. From taste-skill and Hallmark.
+- `product-brief.md`: brand-truth protocol, never theme a real brand from memory. From Hallmark.
+- `master-critique.md`: cover-the-logo, edges, sameness and collisions passes; fix order; fresh-eyes review by a sub-agent that did not build the screen. From taste-skill and Hallmark.
+
 ## v2.1.0 - 2026-10-29
 
 - **Master critique** (`critique` mode at full depth): capture -> design review before tools -> deterministic scan -> Craft Score -> report -> targeted questions -> action plan. New module `modules/09-verify/master-critique.md` with Android personas (Casey, Sam, Rita, Alex, Riley) and a cognitive-load / Nielsen cross-check.

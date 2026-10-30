@@ -222,6 +222,10 @@ RULES: list[Rule] = [
          re.compile(r'(?:padding|spacedBy|Spacer\(\s*Modifier\.(?:height|width))\([^)]*\)'), check=_off_grid, skip_path=THEME_PATH),
     Rule('D010', 'medium', 'Baseline Material sample purple (#6750A4)', 'Generate a scheme from the real brand or use dynamic color.',
          D + '02-direction/anti-slop.md', KT + XML, re.compile(r'6750A4', re.I)),
+    Rule('D011', 'low', 'Hype copy that reads as generated', 'Say what the action does or what the user gets, in plain words.',
+         D + '05-components/content-and-copy.md', KT + XML,
+         re.compile(r'(?:"|<string[^>]*>)[^"<]*\b(?:unlock|supercharg|seamless|effortless|elevate|cutting[- ]edge|all[- ]in[- ]one'
+                    r'|revolutioni[sz]|game[- ]chang|next[- ]level|oops\b)', re.I), skip_path=PREVIEW_OR_TEST),
     # Typography
     Rule('T001', 'medium', 'Text smaller than 12sp', 'Use 12sp+ for data and 14sp+ for content; labelSmall only for metadata.',
          D + '03-system/typography.md', KT + XML,

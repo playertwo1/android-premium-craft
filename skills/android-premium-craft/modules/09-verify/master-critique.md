@@ -54,6 +54,14 @@ For each screen, write short notes:
 5. **Personas** (pick 2-3, below): walk the primary task as each and note exactly what broke.
 6. **Cognitive load**: decision points with more than four visible options; information the user must remember across screens.
 7. **Emotional journey**: the riskiest moment (payment, delete, submit). Is there reassurance and recovery?
+8. **Cover the logo**: swap the app name and the main noun. If the screen would work unchanged for a competitor or another industry, specificity is at most 2.
+9. **Edges**: follow the start edge of every text block down the screen and count distinct x positions. Two or three reused on purpose is composed; five or more means things were placed one at a time.
+10. **Sameness across screens**: write one word per screen for its layout (list, form, detail, grid, dashboard). The same card-list shape on every screen is the template showing.
+11. **Collisions**: anything covering content at any scroll position or state - FAB over the last list item, snackbar over the primary action, IME over the submit button, content under the system bars.
+
+**Fix order** for the action plan (later items cannot rescue earlier ones): specificity/idea -> hierarchy -> layout and edges -> typography -> imagery -> color -> states and detail -> motion.
+
+**Fresh eyes.** When this skill also built or redesigned the screen, run Assessment A in a sub-agent that did not build it and gets only the screenshots, `DESIGN.md` and the rubric, never the reasoning behind the build. You read your intentions into your own code; the pixels only show what is there.
 
 ## Step 4 - Assessment B: deterministic scan
 

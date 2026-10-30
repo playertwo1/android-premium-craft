@@ -21,7 +21,7 @@ It gives the agent three things it does not have on its own:
 
 1. **Decisions** - ten named visual directions, a design-token system and an anti-slop catalogue, so the output stops looking like every other generated app.
 2. **Craft knowledge** - 31 focused modules on Material 3 / Expressive, layout, edge-to-edge, adaptive, components, forms, states, copy, motion, accessibility and performance, up to date with Android 16/17 platform rules.
-3. **Ways to check its own work** - a master critique with a 0-100 Craft Score, a 39-rule lint, a theme-contrast checker, a device-matrix capture that restores your phone, and an honest release gate. No invented FPS, no fake scores.
+3. **Ways to check its own work** - a master critique with a 0-100 Craft Score, a 40-rule lint, a theme-contrast checker, a device-matrix capture that restores your phone, and an honest release gate. No invented FPS, no fake scores.
 
 ## Contents
 
@@ -181,7 +181,7 @@ Personas used in the walkthrough: **Casey** (one hand, on the bus), **Sam** (Tal
 
 All scripts are Python 3.9+ with the standard library only. They never modify your app (the device matrix changes device settings temporarily and restores them).
 
-### Craft lint - 39 rules
+### Craft lint - 40 rules
 
 <p align="center"><img src="docs/images/lint-output.png" alt="Illustrative summary of ui_audit.py lint findings on the sloppy fixture app" width="100%"></p>
 
@@ -208,6 +208,7 @@ Suppress a finding with `// craft-lint: ignore C001` on the line or the line abo
 | C003 | medium | Hex color in layout XML |
 | C004 | medium | Secondary text made with alpha |
 | D010 | medium | Baseline Material sample purple (`#6750A4`) |
+| D011 | low | Hype copy that reads as generated |
 | T001 | medium | Text smaller than 12sp |
 | A003 | medium | Clickable element sized under 48dp |
 | A006 | medium | Fixed height on a text-bearing component |

@@ -3,8 +3,8 @@ name: android-premium-craft
 description: Designs, builds, critiques and verifies native Android app interfaces to a premium, release-ready standard - visual direction and design tokens, Material 3 and M3 Expressive, Jetpack Compose and XML Views, layout, adaptive and edge-to-edge, touch, accessibility, motion, haptics, UX copy, screen states, performance, and screenshot or device-matrix verification with honest evidence. Use when creating or redesigning an Android screen, theme or design system; reviewing screenshots or Compose/XML code for UI quality; making an app look less generic or more polished; fixing insets, tap targets, TalkBack, font scaling, dark theme, tablets, foldables, animation or jank; or preparing a UI release review. Not for backend, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.1.0"
-  updated: "2026-10-29"
+  version: "2.2.0"
+  updated: "2026-10-30"
 ---
 
 # Android Premium Craft v2
@@ -153,7 +153,7 @@ Not installed? Proceed with this skill's module and the linked developer.android
 
 ```bash
 python scripts/project_probe.py <app> --format markdown        # versions, mandates, screenshot advice
-python scripts/ui_audit.py lint <app> --format markdown          # 39 craft rules; --format sarif for CI
+python scripts/ui_audit.py lint <app> --format markdown          # 40 craft rules; --format sarif for CI
 python scripts/ui_audit.py palette <app>                        # theme role pairs vs WCAG contrast
 python scripts/ui_audit.py contrast '#B3FFFFFF' '#121316'        # supports #AARRGGBB over a background
 python scripts/device_matrix.py --out shots/ --profiles core     # adb stress capture; restores settings

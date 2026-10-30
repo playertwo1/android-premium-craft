@@ -20,7 +20,7 @@ Ela dá ao agente três coisas que ele não tem sozinho:
 
 1. **Decisões** - dez direções visuais com nome, um sistema de tokens de design e um catálogo "anti-slop", para o resultado parar de parecer com todo app gerado por IA.
 2. **Conhecimento de ofício** - 31 módulos sobre Material 3 / Expressive, layout, edge-to-edge, telas grandes, componentes, formulários, estados, textos, motion, acessibilidade e performance, atualizados com as regras do Android 16/17.
-3. **Como conferir o próprio trabalho** - critique mestre com nota de 0 a 100, lint com 39 regras, checagem de contraste do tema, captura em matriz de dispositivos que restaura o aparelho e um gate de release honesto. Sem FPS inventado, sem nota de mentira.
+3. **Como conferir o próprio trabalho** - critique mestre com nota de 0 a 100, lint com 40 regras, checagem de contraste do tema, captura em matriz de dispositivos que restaura o aparelho e um gate de release honesto. Sem FPS inventado, sem nota de mentira.
 
 ## Antes e depois
 
@@ -97,7 +97,7 @@ Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dis
 | Script | Faz |
 |---|---|
 | `critique_score.py` | Calcula a Craft Score 0-100, scorecard e evolução entre rodadas |
-| `ui_audit.py lint` | 39 regras (acessibilidade, insets, back, cores, tipografia, performance, slop), saída Markdown/JSON/SARIF, `--fail-on high` para CI |
+| `ui_audit.py lint` | 40 regras (acessibilidade, insets, back, cores, tipografia, performance, slop), saída Markdown/JSON/SARIF, `--fail-on high` para CI |
 | `ui_audit.py palette` | Contraste WCAG de todos os pares de papéis do tema |
 | `ui_audit.py contrast` | Contraste com cor translúcida (`#AARRGGBB`) |
 | `project_probe.py` | Toolkit, SDKs, BOM, Material 3, bibliotecas, flags do manifest e obrigações por targetSdk |
