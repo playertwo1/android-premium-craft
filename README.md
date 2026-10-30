@@ -25,6 +25,7 @@ It gives the agent three things it does not have on its own:
 
 ## Contents
 
+- [What's new in v2.2](#whats-new-in-v22)
 - [Before and after](#before-and-after)
 - [Quick start](#quick-start)
 - [Install](#install)
@@ -39,6 +40,23 @@ It gives the agent three things it does not have on its own:
 - [Evidence, not vibes](#evidence-not-vibes)
 - [FAQ](#faq)
 - [Contributing](#contributing)
+
+## What's new in v2.2
+
+v2.2 adapts ideas from five open-source (MIT) design skills to Android. Each idea was checked for fit with native apps; web-only advice was left out.
+
+| Area | What changed | Where | Idea from |
+|---|---|---|---|
+| Lint | New rule **D011**: hype copy that reads as generated (*unlock, seamless, supercharge, elevate, effortless, all-in-one, "Oops!"*) in Kotlin, layouts and `strings.xml`. The lint now has **40 rules** | `scripts/ui_audit.py` | [taste-skill](https://github.com/Leonxlnx/taste-skill) |
+| Anti-slop | **Dated 2025-2026 tells** in Android form: the "warm editorial" shortcut (cream + terracotta + serif), eyebrow labels, "New/Beta/AI" pills, the accented word, mono as costume, 01/02/03 numbering, decorative status dots, fake dashboards, invented proof | `modules/02-direction/anti-slop.md` | taste-skill, [Hallmark](https://github.com/Nutlope/hallmark) |
+| Anti-slop | **Removal is not enough**: a screen with every tell removed and nothing in their place is the "avoidance aesthetic". Decide the key fact, the anchor and real content first | `anti-slop.md` | taste-skill |
+| Brand | **Brand truth**: never theme a real brand from colors remembered by the model; use project files, a brand guide or values from the user, and record the source in `DESIGN.md` | `modules/01-discover/product-brief.md` | Hallmark |
+| Critique | Four new passes on the screenshots: **cover the logo**, **edges**, **sameness across screens**, **collisions** (FAB, snackbar, IME, system bars over content) | `modules/09-verify/master-critique.md` | taste-skill |
+| Critique | **Fix order** for the action plan: specificity -> hierarchy -> layout -> type -> imagery -> color -> states -> motion | `master-critique.md` | taste-skill |
+| Critique | **Fresh eyes**: when the skill built the screen, the critique runs in a sub-agent that sees only screenshots, `DESIGN.md` and the rubric | `master-critique.md` | Hallmark |
+| Sources | The five repositories are credited with what was taken from each | `research/sources.md` | - |
+
+Also reviewed, nothing adopted: [ai-design-skills](https://github.com/elayadesign/ai-design-skills) (web landing pages only). [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) data went to the companion kit [Impeccable Mobile Studio](https://github.com/playertwo1/Impeccable-Mobile-Studio); [diagram-design](https://github.com/cathrynlavery/diagram-design) is credited for its practice of ADRs and a size cap on `SKILL.md`. Full list in [CHANGELOG.md](CHANGELOG.md).
 
 ## Before and after
 
@@ -339,7 +357,7 @@ skills/android-premium-craft/
 │   └── AGENTS_SNIPPET.md
 ├── scripts/              ui_audit · critique_score · project_probe · device_matrix · review_gate · install · validate
 ├── evals/                9 scenarios + a deliberately sloppy fixture app
-└── tests/                51 unit tests
+└── tests/                53 unit tests
 ```
 
 The Compose templates are ready to copy: [`CraftTheme.kt`](skills/android-premium-craft/assets/compose/CraftTheme.kt) (light/dark schemes, extended success/warning roles, spacing tokens, tabular numerals - passes its own contrast check), [`CraftPreviews.kt`](skills/android-premium-craft/assets/compose/CraftPreviews.kt) (light/dark, 200% text, RTL, landscape, one preview per UI state) and [`A11yCheckTest.kt`](skills/android-premium-craft/assets/compose/A11yCheckTest.kt).
@@ -380,7 +398,7 @@ The best contribution is a real failure: the prompt, the model, what the agent d
 ```bash
 cd skills/android-premium-craft
 python scripts/validate_skill.py           # Agent Skills spec + internal links
-python -m unittest discover -s tests -v    # 51 tests
+python -m unittest discover -s tests -v    # 53 tests
 ```
 
 See [CHANGELOG.md](CHANGELOG.md) and the v1.2 to v2.0 write-up in [IMPROVEMENTS.md](IMPROVEMENTS.md) (Portuguese).

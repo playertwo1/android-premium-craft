@@ -22,6 +22,23 @@ Ela dá ao agente três coisas que ele não tem sozinho:
 2. **Conhecimento de ofício** - 31 módulos sobre Material 3 / Expressive, layout, edge-to-edge, telas grandes, componentes, formulários, estados, textos, motion, acessibilidade e performance, atualizados com as regras do Android 16/17.
 3. **Como conferir o próprio trabalho** - critique mestre com nota de 0 a 100, lint com 40 regras, checagem de contraste do tema, captura em matriz de dispositivos que restaura o aparelho e um gate de release honesto. Sem FPS inventado, sem nota de mentira.
 
+## Novidades da v2.2
+
+A v2.2 adapta ao Android ideias de cinco skills de design abertas (MIT). Cada ideia foi conferida para app nativo; conselho só de web ficou de fora.
+
+| Área | O que mudou | Onde | Ideia de |
+|---|---|---|---|
+| Lint | Regra nova **D011**: copy de marketing que soa gerada (*unlock, seamless, supercharge, elevate, effortless, all-in-one, "Oops!"*) em Kotlin, layouts e `strings.xml`. Agora são **40 regras** | `scripts/ui_audit.py` | [taste-skill](https://github.com/Leonxlnx/taste-skill) |
+| Anti-slop | **Sinais datados de 2025-2026** na forma Android: atalho "editorial premium" (creme + terracota + serifa), rótulo sobrancelha, pílulas "Novo/Beta/IA", palavra destacada no título, monoespaçada como fantasia, numeração 01/02/03, ponto de status decorativo, dashboard falso, prova inventada | `modules/02-direction/anti-slop.md` | taste-skill, [Hallmark](https://github.com/Nutlope/hallmark) |
+| Anti-slop | **Remover não basta**: tela sem nenhum sinal e sem nada no lugar é a "estética da evitação". Primeiro o fato principal, a âncora e o conteúdo real | `anti-slop.md` | taste-skill |
+| Marca | **Marca real**: nunca tematizar uma marca com cores lembradas pelo modelo; usar arquivos do projeto, guia de marca ou valores do usuário e registrar a origem no `DESIGN.md` | `modules/01-discover/product-brief.md` | Hallmark |
+| Crítica | Quatro passes novos sobre as capturas: **cobrir o logo**, **bordas**, **mesmice entre telas**, **colisões** (FAB, snackbar, teclado, barras do sistema sobre o conteúdo) | `modules/09-verify/master-critique.md` | taste-skill |
+| Crítica | **Ordem de correção** no plano: identidade -> hierarquia -> layout -> tipografia -> imagens -> cor -> estados -> motion | `master-critique.md` | taste-skill |
+| Crítica | **Olhos novos**: quando a skill construiu a tela, a crítica roda em um subagente que só vê as capturas, o `DESIGN.md` e a rubrica | `master-critique.md` | Hallmark |
+| Fontes | Os cinco repositórios creditados com o que veio de cada um | `research/sources.md` | - |
+
+Também analisados, sem adoção: [ai-design-skills](https://github.com/elayadesign/ai-design-skills) (só landing page web). Os dados do [UI/UX Pro Max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill) foram para o kit irmão [Impeccable Mobile Studio](https://github.com/playertwo1/Impeccable-Mobile-Studio); o [diagram-design](https://github.com/cathrynlavery/diagram-design) é creditado pela prática de ADRs e limite de tamanho do `SKILL.md`. Lista completa no [CHANGELOG.md](CHANGELOG.md).
+
 ## Antes e depois
 
 <p align="center"><img src="docs/images/before-after.png" alt="Esquerda: tela típica gerada por IA. Direita: a mesma tela com a skill aplicada." width="100%"></p>
@@ -118,7 +135,7 @@ skills/android-premium-craft/
 ├── assets/               DESIGN_TEMPLATE.md · CRITIQUE_TEMPLATE.json · REVIEW_EVIDENCE_TEMPLATE.json · AGENTS_SNIPPET.md
 ├── scripts/              ui_audit · critique_score · project_probe · device_matrix · review_gate · install · validate
 ├── evals/                9 cenários + um app de exemplo propositalmente ruim
-└── tests/                51 testes unitários
+└── tests/                53 testes unitários
 ```
 
 ## Evidência, não impressão
