@@ -81,7 +81,7 @@ def main(argv=None) -> int:
         if backup:
             print('Previous install kept at:', backup)
     print('Add .craft/ to the app .gitignore: it holds captures, reports and install backups.')
-    print('Tip: paste assets/AGENTS_SNIPPET.md into AGENTS.md / CLAUDE.md so the core rules apply even when the skill is not loaded.')
+    print('Next: paste assets/AGENTS_SNIPPET.md into AGENTS.md / CLAUDE.md. Without it, agents often skip the skill.')
     return 0
 
 

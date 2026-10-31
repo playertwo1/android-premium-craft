@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.3.2 - 2026-10-31
+
+- Pasting `AGENTS_SNIPPET.md` into the app's `CLAUDE.md` raised skill loading from 13 of 24 runs to 24 of 24, with no false trigger in 3 negative runs (`evals/RESULTS.md`). The docs now say so.
+- The snippet no longer says to lint before the review, and says what to do when `DESIGN.md` is missing.
+- `ui_audit.py lint` says when it checked nothing, and `--fail-on` fails in that case.
+- Corrected stale module, line and rule counts.
+
 ## v2.3.1 - 2026-10-31
 
 Fixes from the first with-and-without eval run (`evals/RESULTS.md`).

@@ -365,7 +365,9 @@ def lint_markdown(report: dict, max_per_rule: int = 5) -> str:
     out = ['# Android Premium Craft - lint', '',
            f"Scanned **{report['files_scanned']}** files in `{report['root']}`: "
            f"**{c['high']} high**, {c['medium']} medium, {c['low']} low.", '']
-    if not report['findings']:
+    if not report['files_scanned']:
+        out.append('**Nothing was checked:** no Kotlin or XML files were found. Flutter and React Native code is not linted.')
+    elif not report['findings']:
         out.append('No rule matched. This does **not** mean the UI passes review.')
     shown: dict[str, int] = {}
     current = None
@@ -606,7 +608,7 @@ def main(argv=None) -> int:
                 print(lint_markdown(report, args.max_per_rule))
             if args.fail_on != 'none':
                 floor = SEVERITY_ORDER[args.fail_on]
-                if any(SEVERITY_ORDER[f['severity']] >= floor for f in report['findings']):
+                if not report['files_scanned'] or any(SEVERITY_ORDER[f['severity']] >= floor for f in report['findings']):
                     return 1
         elif args.command == 'palette':
             report = palette(args.path.resolve())

@@ -3,7 +3,7 @@ name: android-premium-craft
 description: Use for any work on how a mobile or Android app looks, feels or behaves on screen, even if the request never says "Android" or "UI". Covers visual direction for a new app or dashboard, building or redesigning a screen or theme, accessibility questions, scoring or reviewing an app or screenshots, making an app less generic, tablets and foldables, insets, animation, a list that stutters or drops FPS, and UI release reviews. Not for backend, networking, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.3.1"
+  version: "2.3.2"
   updated: "2026-10-31"
 ---
 

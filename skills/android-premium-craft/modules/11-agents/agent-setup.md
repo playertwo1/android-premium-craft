@@ -40,7 +40,7 @@ Any agent:   npx skills add playertwo1/android-premium-craft
 
 ## Always-on snippet (why and how)
 
-Skills load only when the agent decides they are relevant; evaluations by Vercel (Jan 2026) found agents skipped available skills in a large share of cases, while a compact always-present index in `AGENTS.md` performed best. Combine both: keep the skill for depth and paste [AGENTS_SNIPPET.md](../../assets/AGENTS_SNIPPET.md) (about 25 lines) into the app's `AGENTS.md` / `CLAUDE.md` / `GEMINI.md` so the non-negotiables apply even when the skill is not loaded.
+Skills load only when the agent decides they are relevant; evaluations by Vercel (Jan 2026) found agents skipped available skills in a large share of cases, while a compact always-present index in `AGENTS.md` performed best. Combine both: keep the skill for depth and paste [AGENTS_SNIPPET.md](../../assets/AGENTS_SNIPPET.md) (about 18 lines) into the app's `AGENTS.md` / `CLAUDE.md` / `GEMINI.md` so the non-negotiables apply even when the skill is not loaded.
 
 ## Useful tools and MCP servers
 
