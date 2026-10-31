@@ -370,7 +370,7 @@ skills/android-premium-craft/
 ├── data/                 Compose, Flutter, React Native and cross-stack guideline tables
 ├── scripts/              ui_audit · critique_score · project_probe · device_matrix · mobile · review_gate · install · validate
 ├── evals/                9 scenarios + a sloppy fixture and a buildable demo app with planted faults
-└── tests/                81 unit tests
+└── tests/                82 unit tests
 ```
 
 The Compose templates are ready to copy: [`CraftTheme.kt`](skills/android-premium-craft/assets/compose/CraftTheme.kt) (light/dark schemes, extended success/warning roles, spacing tokens, tabular numerals - passes its own contrast check), [`CraftPreviews.kt`](skills/android-premium-craft/assets/compose/CraftPreviews.kt) (light/dark, 200% text, RTL, landscape, one preview per UI state) and [`A11yCheckTest.kt`](skills/android-premium-craft/assets/compose/A11yCheckTest.kt).

@@ -51,6 +51,8 @@ def validate(root: Path) -> list[str]:
         errors.append(f'description must be 1-1024 characters (has {len(desc)})')
     if '<' in desc or '>' in desc:
         errors.append('description must not contain angle brackets / XML tags')
+    if ': ' in desc:
+        errors.append('description must not contain ": " (invalid YAML in a plain scalar)')
     if len(text.splitlines()) > MAX_SKILL_LINES:
         errors.append(f'SKILL.md has {len(text.splitlines())} lines (max {MAX_SKILL_LINES})')
 

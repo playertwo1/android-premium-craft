@@ -1,10 +1,10 @@
 ---
 name: android-premium-craft
-description: Designs, builds, critiques and verifies native Android app interfaces to a premium, release-ready standard - visual direction and design tokens, Material 3 and M3 Expressive, Jetpack Compose and XML Views, layout, adaptive and edge-to-edge, touch, accessibility, motion, haptics, UX copy, screen states, performance, and screenshot or device-matrix verification with honest evidence. Use when creating or redesigning an Android screen, theme or design system; reviewing screenshots or Compose/XML code for UI quality; making an app look less generic or more polished; fixing insets, tap targets, TalkBack, font scaling, dark theme, tablets, foldables, animation or jank; or preparing a UI release review. Not for backend, data-layer or build-only work.
+description: Use for any work on how a mobile or Android app looks, feels or behaves on screen, even if the request never says "Android" or "UI". Covers visual direction for a new app or dashboard, building or redesigning a screen or theme, accessibility questions, scoring or reviewing an app or screenshots, making an app less generic, tablets and foldables, insets, animation, a list that stutters or drops FPS, and UI release reviews. Not for backend, networking, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.3.0"
-  updated: "2026-10-30"
+  version: "2.3.1"
+  updated: "2026-10-31"
 ---
 
 # Android Premium Craft v2
@@ -53,10 +53,10 @@ Feedback rule: after step 5 or 7 finds a P0/P1, fix and repeat from step 5. Stop
 
 | Mode | Purpose | Load | Edits |
 |---|---|---|---|
-| `critique` (default) | Master critique: Craft Score 0-100 + scorecard, top 3-5 issues, persona red flags, quick wins, action plan. `critique quick`: 2 strengths + 5 findings, no score | master-critique, critique-rubric, anti-slop | No |
+| `critique` (default) | Master critique: Craft Score 0-100 + scorecard, top 3-5 issues, persona red flags, quick wins, action plan. Write the design review before running lint or palette. `critique quick`: 2 strengths + 5 findings, no score | master-critique, critique-rubric, anti-slop | No |
 | `shape` | Brief + anchor + token proposal before any code | product-brief, aesthetic-anchors, 03-system | No |
 | `system` | Create or document the design system (`DESIGN.md` + theme code) | 03-system, tokens-and-theming | On request |
-| `build` | New screen or flow from an approved direction | 04, 05, states, visual loop | Yes |
+| `build` | New screen or flow from an approved direction. Direction or `DESIGN.md` missing or only a template: do not stop; follow the project's theme, or pick an anchor, build, and list every assumption | 04, 05, states, visual loop | Yes |
 | `redesign` | Rework an existing screen to an approved direction | as `build` + critique | Yes |
 | `polish` | Alignment, rhythm, type, icons, states, micro-motion; no re-architecture | anti-slop, 03-system, motion | Yes |
 | `bolder` / `quieter` | Raise or lower visual intensity within the anchor | aesthetic-anchors, color, typography | Yes |

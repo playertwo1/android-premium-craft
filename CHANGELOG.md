@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.3.1 - 2026-10-31
+
+Fixes from the first with-and-without eval run (`evals/RESULTS.md`).
+- Shorter description with the triggers first. Automatic triggering is still unreliable: 13 of 24 runs, with no proven gain over v2.3.0. Name the skill for reliable use.
+- `validate_skill.py` rejects a description that contains `: `, which is invalid YAML.
+- `build` no longer stops when the direction or `DESIGN.md` is missing: it builds and lists its assumptions.
+- `critique` repeats that the review comes before lint, and cited lines must be re-opened before reporting.
+- `install_skill.py` no longer copies `evals/` and `tests/` into projects.
+
 ## v2.3.0 - 2026-10-31
 
 Merged [Impeccable Mobile Studio](https://github.com/playertwo1/Impeccable-Mobile-Studio) (MIT) after running both projects on an emulator.
