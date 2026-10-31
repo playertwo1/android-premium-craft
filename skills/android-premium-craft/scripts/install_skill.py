@@ -10,7 +10,8 @@ from pathlib import Path
 
 NAME = 'android-premium-craft'
 AGENTS = ('claude', 'codex', 'antigravity', 'gemini')
-IGNORE = shutil.ignore_patterns('__pycache__', '*.pyc', '.pytest_cache')
+# evals and tests are for developing the skill: evals.json is an answer key and its fixtures pollute project searches.
+IGNORE = shutil.ignore_patterns('__pycache__', '*.pyc', '.pytest_cache', 'evals', 'tests')
 
 
 def targets_for(project: Path, agents: list[str]) -> list[Path]:
@@ -23,7 +24,7 @@ def targets_for(project: Path, agents: list[str]) -> list[Path]:
 
 
 def same_tree(left: Path, right: Path) -> bool:
-    cmp = filecmp.dircmp(left, right, ignore=['__pycache__', '.pytest_cache'])
+    cmp = filecmp.dircmp(left, right, ignore=['__pycache__', '.pytest_cache', 'evals', 'tests'])
     _, mismatch, errors = filecmp.cmpfiles(left, right, cmp.common_files, shallow=False)
     return (not (cmp.left_only or cmp.right_only or cmp.common_funny or mismatch or errors)
             and all(same_tree(left / d, right / d) for d in cmp.common_dirs))

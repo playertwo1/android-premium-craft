@@ -201,6 +201,9 @@ class MiscTests(unittest.TestCase):
                 self.assertEqual(install.main(['--project', str(project), '--agents', 'claude']), 0)
             skill = project / '.claude' / 'skills' / 'android-premium-craft'
             self.assertTrue((skill / 'SKILL.md').is_file())
+            self.assertFalse((skill / 'evals').exists())
+            self.assertFalse((skill / 'tests').exists())
+            self.assertEqual(validator.validate(skill), [])
             (skill / 'local-note.md').write_text('keep me')
             with redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
                 install.main(['--project', str(project), '--agents', 'claude'])
@@ -219,6 +222,13 @@ class MiscTests(unittest.TestCase):
 
     def test_skill_validates(self):
         self.assertEqual(validator.validate(ROOT), [])
+
+    def test_description_with_colon_is_rejected(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td, 'demo')
+            root.mkdir()
+            (root / 'SKILL.md').write_text('---\nname: demo\ndescription: Use it: often\n---\n', encoding='utf-8')
+            self.assertTrue(any('YAML' in e for e in validator.validate(root)))
 
 
 if __name__ == '__main__':

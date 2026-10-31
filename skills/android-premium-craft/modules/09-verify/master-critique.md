@@ -19,7 +19,7 @@ The `critique` mode at full depth. Act as a principal Android design engineer wh
 
 1. **Look before judging.** Score a dimension from pixels when you can (`basis: visual`); code-only scoring is allowed but lowers confidence and must say so.
 2. **A before B.** Write the design review before reading lint/palette output so the detector does not anchor judgment. If a sub-agent tool exists, run Assessment B in a separate sub-agent and merge only in Step 5.
-3. **Every score has evidence**: a screenshot file, `file:line`, or a measurement. No evidence, no number - use `n/a` with a reason.
+3. **Every score has evidence**: a screenshot file, `file:line`, or a measurement. No evidence, no number - use `n/a` with a reason. Re-open each cited `file:line` before reporting it, and confirm that line holds the code you describe.
 4. **The number comes from the script**: fill the critique JSON and run `scripts/critique_score.py`. Never compute or round the Craft Score by hand.
 5. **The report is the deliverable.** Write the full report in chat first, then archive it, then ask the questions last.
 6. **Read-only.** Critique never edits app code.

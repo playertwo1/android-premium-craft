@@ -137,7 +137,7 @@ skills/android-premium-craft/
 ├── data/                 tabelas de diretrizes Compose, Flutter, React Native e multiplataforma
 ├── scripts/              ui_audit · critique_score · project_probe · device_matrix · mobile · review_gate · install · validate
 ├── evals/                9 cenários + um exemplo ruim e um app compilável com falhas plantadas
-└── tests/                81 testes unitários
+└── tests/                82 testes unitários
 ```
 
 ## Evidência, não impressão
