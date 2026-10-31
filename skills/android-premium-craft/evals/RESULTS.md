@@ -1,5 +1,16 @@
 # Eval results
 
+## 2026-10-31, skill v2.3.2, claude-sonnet-5-5, trigger check with the snippet
+
+Same setup as the v2.3.1 check below, plus `assets/AGENTS_SNIPPET.md` as the workspace's `CLAUDE.md`. Three runs per scenario. No criteria were scored.
+
+| Setup | Skill loaded (8 scenarios) | False triggers (negative-backend) |
+|---|---:|---:|
+| Skill installed only (v2.3.1) | 13/24 | 0/3 |
+| Skill plus snippet | **24/24** | 0/3 |
+
+Limits: one model, Claude Code only, small fixture workspaces. Loading the skill does not prove better output; v2.3.2 output was not scored.
+
 ## 2026-10-31, skill v2.3.1, claude-sonnet-5-5, trigger check only
 
 Three runs per scenario, with the skill installed. No criteria were scored in this round, so v2.3.1 has no met count.

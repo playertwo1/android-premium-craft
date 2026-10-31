@@ -20,7 +20,7 @@
 It gives the agent three things it does not have on its own:
 
 1. **Decisions** - ten named visual directions, a design-token system and an anti-slop catalogue, so the output stops looking like every other generated app.
-2. **Craft knowledge** - 31 focused modules on Material 3 / Expressive, layout, edge-to-edge, adaptive, components, forms, states, copy, motion, accessibility and performance, up to date with Android 16/17 platform rules.
+2. **Craft knowledge** - 32 focused modules on Material 3 / Expressive, layout, edge-to-edge, adaptive, components, forms, states, copy, motion, accessibility and performance, up to date with Android 16/17 platform rules.
 3. **Ways to check its own work** - a master critique with a 0-100 Craft Score, a 40-rule lint, a theme-contrast checker, a device-matrix capture that restores your phone, and an honest release gate. No invented FPS, no fake scores.
 
 ## Contents
@@ -137,7 +137,7 @@ python skills/android-premium-craft/scripts/install_skill.py --project /path/to/
 Never overwrites an existing install unless you pass `--replace`.
 </details>
 
-**Recommended:** paste [`AGENTS_SNIPPET.md`](skills/android-premium-craft/assets/AGENTS_SNIPPET.md) (25 lines) into your app's `AGENTS.md` / `CLAUDE.md`. Agents skip installed skills more often than you would expect; the snippet keeps the core rules always on.
+**Do this too:** paste [`AGENTS_SNIPPET.md`](skills/android-premium-craft/assets/AGENTS_SNIPPET.md) (about 18 lines) into your app's `AGENTS.md` / `CLAUDE.md`. In our evals, the skill loaded in 13 of 24 runs without it and 24 of 24 with it ([results](skills/android-premium-craft/evals/RESULTS.md); Claude Code, one model).
 
 ## Modes
 
@@ -360,7 +360,7 @@ flowchart LR
 
 ```
 skills/android-premium-craft/
-├── SKILL.md              167-line router: principles, craft loop, modes, module index
+├── SKILL.md              175-line router: principles, craft loop, modes, module index
 ├── modules/              32 modules in 11 groups, loaded only when a mode needs them
 ├── research/             evidence ledger (what is proven vs opinion) and dated sources
 ├── assets/

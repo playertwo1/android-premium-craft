@@ -50,7 +50,7 @@ Lista completa e datada: `skills/android-premium-craft/research/sources.md`; o q
 
 ## 5. Sobre o "300% melhor"
 
-Em volume e capacidade a v2 é muito maior (≈ 6x o conteúdo de referência, 39 regras contra 6 dicas, 4 ferramentas novas). Mas **qualidade de skill só se prova com eval**: rode os cenários de `evals/evals.json` com e sem a skill no mesmo modelo (protocolo em `evals/README.md`) e registre em `RESULTS.md`. É esse número, não a contagem de linhas, que pode sustentar o título de referência nº 1.
+Em volume e capacidade a v2 é muito maior (≈ 6x o conteúdo de referência, 39 regras contra 6 dicas, 4 ferramentas novas). Mas **qualidade de skill só se prova com eval**: rode os cenários de `evals/evals.json` com e sem a skill no mesmo modelo (protocolo em `evals/README.md`) e registre em `RESULTS.md`. É esse número, não a contagem de linhas, que mede a qualidade; o resultado está em `evals/RESULTS.md`.
 
 ## 6. Próximos passos
 

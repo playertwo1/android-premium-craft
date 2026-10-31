@@ -1,13 +1,16 @@
+import io
 import json
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from ui_audit import (RULES, as_markdown, contrast_ratio, lint, lint_markdown, lint_sarif, lint_text,  # noqa: E402
                       palette, palette_markdown, parse_color, parse_hex_color, summarize)
+from ui_audit import main as ui_main  # noqa: E402
 
 FIXTURE = ROOT / 'evals' / 'fixtures' / 'sloppy-app'
 DEMO = ROOT / 'evals' / 'fixtures' / 'demo-app'
@@ -124,7 +127,13 @@ class LintTests(unittest.TestCase):
         self.assertFalse(lint_text('// override fun onBackPressed() {', 'a.kt', '.kt'))
 
     def test_outputs(self):
-        self.assertIn('does **not**', lint_markdown(lint(Path(tempfile.mkdtemp()))))
+        self.assertIn('Nothing was checked', lint_markdown(lint(Path(tempfile.mkdtemp()))))
+        with tempfile.TemporaryDirectory() as td:
+            Path(td, 'Clean.kt').write_text('val x = 1\n', encoding='utf-8')
+            self.assertIn('does **not**', lint_markdown(lint(Path(td))))
+            self.assertEqual(ui_main(['lint', td, '--fail-on', 'high']), 0)
+        with tempfile.TemporaryDirectory() as td, redirect_stdout(io.StringIO()):
+            self.assertEqual(ui_main(['lint', td, '--fail-on', 'high']), 1)  # a CI gate must not pass on nothing
         sarif = lint_sarif(self.report)
         self.assertEqual(sarif['version'], '2.1.0')
         self.assertEqual(len(sarif['runs'][0]['results']), len(self.report['findings']))

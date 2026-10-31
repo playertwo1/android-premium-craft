@@ -19,7 +19,7 @@
 Ela dá ao agente três coisas que ele não tem sozinho:
 
 1. **Decisões** - dez direções visuais com nome, um sistema de tokens de design e um catálogo "anti-slop", para o resultado parar de parecer com todo app gerado por IA.
-2. **Conhecimento de ofício** - 31 módulos sobre Material 3 / Expressive, layout, edge-to-edge, telas grandes, componentes, formulários, estados, textos, motion, acessibilidade e performance, atualizados com as regras do Android 16/17.
+2. **Conhecimento de ofício** - 32 módulos sobre Material 3 / Expressive, layout, edge-to-edge, telas grandes, componentes, formulários, estados, textos, motion, acessibilidade e performance, atualizados com as regras do Android 16/17.
 3. **Como conferir o próprio trabalho** - critique mestre com nota de 0 a 100, lint com 40 regras, checagem de contraste do tema, captura em matriz de dispositivos que restaura o aparelho e um gate de release honesto. Sem FPS inventado, sem nota de mentira.
 
 ## Novidades da v2.2
@@ -69,7 +69,7 @@ No Codex use `$android-premium-craft ...`; no Antigravity e no Hermes a skill vi
 | Hermes desktop | `%LOCALAPPDATA%\hermes\skills\` (Windows) ou `~/.hermes/skills/` |
 | Vários agentes num projeto | `py skills\android-premium-craft\scripts\install_skill.py --project "C:\SEU-APP" --agents claude codex antigravity` |
 
-**Recomendado:** cole [`AGENTS_SNIPPET.md`](skills/android-premium-craft/assets/AGENTS_SNIPPET.md) no `AGENTS.md` / `CLAUDE.md` do app. Agentes ignoram skills instaladas com mais frequência do que se imagina; o snippet mantém as regras principais sempre ativas.
+**Faça também:** cole [`AGENTS_SNIPPET.md`](skills/android-premium-craft/assets/AGENTS_SNIPPET.md) no `AGENTS.md` / `CLAUDE.md` do app. Nos nossos evals, a skill carregou em 13 de 24 execuções sem ele e em 24 de 24 com ele ([resultados](skills/android-premium-craft/evals/RESULTS.md); Claude Code, um modelo).
 
 ## Critique mestre: nota para o seu app
 
@@ -129,7 +129,7 @@ Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dis
 
 ```
 skills/android-premium-craft/
-├── SKILL.md              roteador de 167 linhas: princípios, ciclo, modos, índice
+├── SKILL.md              roteador de 175 linhas: princípios, ciclo, modos, índice
 ├── modules/              32 módulos em 11 grupos, carregados só quando o modo precisa
 ├── research/             evidências (o que é prova vs. opinião) e fontes datadas
 ├── assets/compose/       CraftTheme.kt · CraftPreviews.kt · A11yCheckTest.kt
