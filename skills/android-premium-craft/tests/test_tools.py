@@ -1,7 +1,9 @@
 import importlib.util
+import io
 import json
 import tempfile
 import unittest
+from contextlib import redirect_stderr, redirect_stdout
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -191,6 +193,23 @@ class MiscTests(unittest.TestCase):
         paths = install.targets_for(project, ['codex', 'antigravity', 'claude'])
         self.assertEqual(paths, [project / '.agents' / 'skills' / 'android-premium-craft',
                                  project / '.claude' / 'skills' / 'android-premium-craft'])
+
+    def test_install_replace_keeps_a_verified_backup(self):
+        with tempfile.TemporaryDirectory() as td:
+            project = Path(td).resolve()
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(install.main(['--project', str(project), '--agents', 'claude']), 0)
+            skill = project / '.claude' / 'skills' / 'android-premium-craft'
+            self.assertTrue((skill / 'SKILL.md').is_file())
+            (skill / 'local-note.md').write_text('keep me')
+            with redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+                install.main(['--project', str(project), '--agents', 'claude'])
+            self.assertTrue((skill / 'local-note.md').is_file())
+            with redirect_stdout(io.StringIO()):
+                self.assertEqual(install.main(['--project', str(project), '--agents', 'claude', '--replace']), 0)
+            self.assertFalse((skill / 'local-note.md').exists())
+            backups = list((project / '.craft' / 'install-backups').glob('*/local-note.md'))
+            self.assertEqual(len(backups), 1)
 
     def test_reference_capture_command(self):
         args = capture.build_ffmpeg_command(Path('test.mp4'), Path('frames'), 2, 24)

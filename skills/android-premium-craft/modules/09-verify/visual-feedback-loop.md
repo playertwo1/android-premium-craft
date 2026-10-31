@@ -7,6 +7,7 @@ Agents that cannot see their output ship generic or broken UI. Close the loop: *
 - Route A: Compose previews to PNG
 - Route B: device or emulator capture
 - Route C: Maestro MCP
+- Before and after
 - How to look at a screenshot
 - Loop discipline
 
@@ -47,6 +48,15 @@ python scripts/device_matrix.py --out shots/ --profiles core --dump  # matrix ca
 ## Route C: Maestro MCP
 
 `list_devices` -> `inspect_screen` (hierarchy with bounds and text) -> `take_screenshot`. Write a small flow to reach the screen (`launchApp`, `tapOn`) and reuse it after every change. Maestro flows double as regression tests for the critical journey.
+
+## Before and after
+
+1. Capture a baseline **before** editing: `python scripts/mobile.py capture --name before --serial <id>`.
+2. Make the change, relaunch the same state and capture `after`.
+3. `python scripts/mobile.py compare --before .craft/captures/before.png --after .craft/captures/after.png --output .craft/diff`.
+4. Run the main flow with `mobile.py test --serial <id>`. With several devices connected, always pass it: without it Maestro picks one on its own, possibly the wrong one.
+
+Comparison rules: sizes must match; declare dynamic areas (clock, live data) with `--ignore-region` and never mask everything; never update an approved reference without permission; a pixel diff finds regressions and never proves a design is better. A capture taken right after launch can show the splash screen, so open each image before citing it as evidence.
 
 ## How to look at a screenshot
 

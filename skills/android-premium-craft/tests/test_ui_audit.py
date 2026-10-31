@@ -7,9 +7,32 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'scripts'))
 from ui_audit import (RULES, as_markdown, contrast_ratio, lint, lint_markdown, lint_sarif, lint_text,  # noqa: E402
-                      palette, parse_color, parse_hex_color, summarize)
+                      palette, palette_markdown, parse_color, parse_hex_color, summarize)
 
 FIXTURE = ROOT / 'evals' / 'fixtures' / 'sloppy-app'
+DEMO = ROOT / 'evals' / 'fixtures' / 'demo-app'
+
+
+class PlantedFaultTests(unittest.TestCase):
+    """The buildable demo app: see evals/fixtures/demo-app/PLANTED.md."""
+
+    def test_every_code_fault_is_found(self):
+        found = {f['rule'] for f in lint(DEMO)['findings']}
+        planted = {'D010', 'D004', 'A001', 'L001', 'D005', 'T001', 'C004', 'D002', 'D003', 'A006', 'D011', 'A003', 'P001', 'L004', 'L005'}
+        self.assertEqual(planted - found, set())
+
+    def test_correct_button_is_not_flagged(self):
+        source = (DEMO / 'app/src/main/java/com/example/demo/MainActivity.kt').read_text(encoding='utf-8').splitlines()
+        lines = [f['line'] for f in lint(DEMO)['findings'] if f['rule'] == 'A001']
+        self.assertEqual(len(lines), 1)
+        self.assertIn('Search', source[lines[0] - 1])
+
+    def test_alpha_scrim_background_is_not_secondary_text(self):
+        ids = {f.rule for f in lint_text('Box(Modifier.background(Color.Black.copy(alpha = 0.5f)))', 'app/x.kt', '.kt')}
+        self.assertNotIn('C004', ids)
+
+    def test_theme_contrast_failure_is_found(self):
+        self.assertRegex(palette_markdown(palette(DEMO)), r'onPrimary \| primary \| 2\.05:1 \| 4\.5 \| \*\*FAIL\*\*')
 
 
 class HypeCopyTests(unittest.TestCase):

@@ -22,6 +22,7 @@ See [adaptive.md](../04-layout/adaptive.md). Extra rules: support free resizing 
 - Use Wear Compose Material 3 (`androidx.wear.compose:compose-material3`), not phone Material: `ScalingLazyColumn`/`TransformingLazyColumn`, `ScreenScaffold`, `EdgeButton`, time text, rotary input support.
 - Round screens: content inset from the curve; test small (192dp) and large round devices.
 - Tiles and complications for the most frequent glance; app for depth.
+- Maestro can run flows when the device and driver support it, but do not assume every Wear emulator is compatible; fall back to `adb` and `mobile.py capture`.
 - Battery: no ambient animation; ambient mode reduces color and updates.
 
 ## TV

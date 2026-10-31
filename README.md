@@ -4,7 +4,7 @@
 
 <p align="center">
   <img alt="Agent Skills spec" src="https://img.shields.io/badge/Agent%20Skills-spec%20compliant-80D5D4?labelColor=0E1514">
-  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B%20stdlib%20only-80D5D4?labelColor=0E1514">
+  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B-80D5D4?labelColor=0E1514">
   <img alt="License Apache-2.0" src="https://img.shields.io/badge/license-Apache--2.0-80D5D4?labelColor=0E1514">
   <img alt="Works with" src="https://img.shields.io/badge/works%20with-Claude%20Code%20%C2%B7%20Codex%20%C2%B7%20Antigravity%20%C2%B7%20Hermes-80D5D4?labelColor=0E1514">
 </p>
@@ -197,7 +197,7 @@ Personas used in the walkthrough: **Casey** (one hand, on the bus), **Sam** (Tal
 
 ## Tools
 
-All scripts are Python 3.9+ with the standard library only. They never modify your app (the device matrix changes device settings temporarily and restores them).
+All scripts are Python 3.9+ with the standard library, except that `mobile.py` capture, inspect and compare use Pillow. They never modify your app (the device matrix changes device settings temporarily and restores them).
 
 ### Craft lint - 40 rules
 
@@ -289,6 +289,18 @@ python scripts/device_matrix.py --out shots/run1 --profiles core --package com.e
 
 14 profiles (dark, light, font 130/200%, display size, bold text, high-contrast text, animations off, 3-button and gesture navigation, RTL, pseudo-locale, landscape). Originals are saved **before** anything changes and restored after each profile; `--restore-only` recovers after a hard kill. Output: one PNG per profile, optional view tree with bounds (to measure touch targets in dp) and a `manifest.json`.
 
+### Device tools
+
+```bash
+pip install -r requirements.txt   # Pillow, only for capture, inspect and compare
+python scripts/mobile.py capture --name before --serial emulator-5554
+python scripts/mobile.py compare --before a.png --after b.png --output diff/
+python scripts/mobile.py test --flow assets/maestro/capture-home.yaml --app-id com.example.app --serial emulator-5554
+python scripts/mobile.py guidelines --stack flutter --severity high --category Accessibility
+```
+
+Evidence goes to `.craft/` and is not overwritten unless you ask. With several devices connected, pass `--serial`: without it Maestro picks one on its own. A pixel diff finds regressions; it never says a design is better.
+
 ### Project probe and release gate
 
 ```bash
@@ -349,15 +361,16 @@ flowchart LR
 ```
 skills/android-premium-craft/
 ├── SKILL.md              167-line router: principles, craft loop, modes, module index
-├── modules/              31 modules in 11 groups, loaded only when a mode needs them
+├── modules/              32 modules in 11 groups, loaded only when a mode needs them
 ├── research/             evidence ledger (what is proven vs opinion) and dated sources
 ├── assets/
 │   ├── compose/          CraftTheme.kt · CraftPreviews.kt · A11yCheckTest.kt
 │   ├── DESIGN_TEMPLATE.md · CRITIQUE_TEMPLATE.json · REVIEW_EVIDENCE_TEMPLATE.json
 │   └── AGENTS_SNIPPET.md
-├── scripts/              ui_audit · critique_score · project_probe · device_matrix · review_gate · install · validate
-├── evals/                9 scenarios + a deliberately sloppy fixture app
-└── tests/                53 unit tests
+├── data/                 Compose, Flutter, React Native and cross-stack guideline tables
+├── scripts/              ui_audit · critique_score · project_probe · device_matrix · mobile · review_gate · install · validate
+├── evals/                9 scenarios + a sloppy fixture and a buildable demo app with planted faults
+└── tests/                81 unit tests
 ```
 
 The Compose templates are ready to copy: [`CraftTheme.kt`](skills/android-premium-craft/assets/compose/CraftTheme.kt) (light/dark schemes, extended success/warning roles, spacing tokens, tabular numerals - passes its own contrast check), [`CraftPreviews.kt`](skills/android-premium-craft/assets/compose/CraftPreviews.kt) (light/dark, 200% text, RTL, landscape, one preview per UI state) and [`A11yCheckTest.kt`](skills/android-premium-craft/assets/compose/A11yCheckTest.kt).
@@ -383,7 +396,7 @@ Every claim in a report carries one of: `observed`, `verified-in-code`, `measure
 
 **Does it only do dark themes?** No. Dark is one anchor (Tonal Calm) out of ten; the default is light + dark + dynamic color unless your brand says otherwise.
 
-**Compose only?** Compose first, XML Views fully covered, plus a concept map for Flutter, React Native and Compose Multiplatform. The lint reads Kotlin, Java and XML.
+**Compose only?** Compose first, XML Views fully covered, plus a concept map, device tools and guideline tables for Flutter and React Native. The lint reads Kotlin, Java and XML.
 
 **Will it upgrade my AGP, Compose or Material version?** No. It checks version gates and uses fallbacks; upgrades happen only when you ask.
 
@@ -398,7 +411,7 @@ The best contribution is a real failure: the prompt, the model, what the agent d
 ```bash
 cd skills/android-premium-craft
 python scripts/validate_skill.py           # Agent Skills spec + internal links
-python -m unittest discover -s tests -v    # 53 tests
+python -m unittest discover -s tests -v    # 81 tests
 ```
 
 See [CHANGELOG.md](CHANGELOG.md) and the v1.2 to v2.0 write-up in [IMPROVEMENTS.md](IMPROVEMENTS.md) (Portuguese).
