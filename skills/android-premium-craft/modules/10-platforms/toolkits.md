@@ -28,4 +28,6 @@ The design rules in this skill are toolkit-independent. This table maps the Comp
 - **React Native**: `allowFontScaling={false}`; `TouchableOpacity` without `accessibilityRole`; iOS-styled navigation on Android; missing Android ripple (`android_ripple` on `Pressable`).
 - **Compose Multiplatform**: Android-specific APIs (insets, haptics, predictive back) behind `expect/actual`; verify Material 3 Expressive availability per target; test on Android, not only desktop previews.
 
-The bundled lint understands Kotlin and XML only; for Flutter/RN, apply the rubric and device matrix (device_matrix.py works for any Android app).
+The bundled lint understands Kotlin and XML only; for Flutter/RN, apply the rubric and device matrix (`device_matrix.py` and `mobile.py` work with any installed Android app), and filter the stack tables: `python scripts/mobile.py guidelines --stack flutter` or `--stack react-native`, plus `--stack app-interface` for cross-stack UX.
+
+Maestro drives the installed build whatever the framework. When the accessibility tree is thin in Flutter, use semantics IDs and captures, not hard-coded coordinates. In Expo, the toolchain does not replace running the app on a real screen.

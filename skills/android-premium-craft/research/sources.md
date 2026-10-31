@@ -62,6 +62,7 @@
 - taste-skill, MIT (dated tells registry, critique passes and fix order, hype-copy list): https://github.com/Leonxlnx/taste-skill
 - Hallmark, MIT (gate tiers and waivers, brand-truth protocol, fresh-context finish review): https://github.com/Nutlope/hallmark
 - UI/UX Pro Max, MIT (per-stack guideline data with docs URLs and verification dates): https://github.com/nextlevelbuilder/ui-ux-pro-max-skill
+- Impeccable Mobile Studio, MIT, merged in v2.3 (`mobile.py`, stack tables, state rules, installer safeguards; license at `scripts/mobile.LICENSE-MIT.txt`): https://github.com/playertwo1/Impeccable-Mobile-Studio
 - diagram-design, MIT (ADRs for skill decisions, SKILL.md size cap, accessible SVG contract): https://github.com/cathrynlavery/diagram-design
 
 ## Community discussions

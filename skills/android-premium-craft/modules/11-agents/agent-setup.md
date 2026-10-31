@@ -46,6 +46,8 @@ Skills load only when the agent decides they are relevant; evaluations by Vercel
 
 Optional; the skill works without any of them.
 
+**Official Impeccable** (`npx impeccable install`) is a separate project and also optional. When it is installed, you may run its `critique`, `audit` or `polish` as a second opinion, invoking the real skill and never simulating it. Reconcile results here and keep this skill's evidence labels. Its `live` and `generate` are browser only: on native, produce variants as files or branches with static captures, and never claim hot reload.
+
 | Tool | Use in this skill |
 |---|---|
 | adb + emulator | `device_matrix.py`, screenshots, view-tree measurements |

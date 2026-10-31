@@ -3,7 +3,7 @@ name: android-premium-craft
 description: Designs, builds, critiques and verifies native Android app interfaces to a premium, release-ready standard - visual direction and design tokens, Material 3 and M3 Expressive, Jetpack Compose and XML Views, layout, adaptive and edge-to-edge, touch, accessibility, motion, haptics, UX copy, screen states, performance, and screenshot or device-matrix verification with honest evidence. Use when creating or redesigning an Android screen, theme or design system; reviewing screenshots or Compose/XML code for UI quality; making an app look less generic or more polished; fixing insets, tap targets, TalkBack, font scaling, dark theme, tablets, foldables, animation or jank; or preparing a UI release review. Not for backend, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.2.0"
+  version: "2.3.0"
   updated: "2026-10-30"
 ---
 
@@ -106,6 +106,7 @@ Typical chains: new app `shape -> system -> build -> see -> harden -> release-re
 - [components-catalog.md](modules/05-components/components-catalog.md) - which component, anatomy, misuse
 - [forms-and-input.md](modules/05-components/forms-and-input.md) - fields, keyboards, autofill, validation
 - [states-and-feedback.md](modules/05-components/states-and-feedback.md) - loading, empty, error, offline, undo, haptics
+- [control-and-data-states.md](modules/05-components/control-and-data-states.md) - per-control states, zero vs missing, data screens, dark parity
 - [content-and-copy.md](modules/05-components/content-and-copy.md) - UX writing, numbers, i18n, RTL
 - [data-display.md](modules/05-components/data-display.md) - dashboards, charts, tables, numeric honesty
 
@@ -149,7 +150,7 @@ When the task is mostly one of these, follow the official skill (Google's `andro
 
 Not installed? Proceed with this skill's module and the linked developer.android.com page.
 
-## Tools (stdlib Python 3.9+, read-only on the app)
+## Tools (Python 3.9+, read-only on the app; `mobile.py` capture, inspect and compare need Pillow)
 
 ```bash
 python scripts/project_probe.py <app> --format markdown        # versions, mandates, screenshot advice
@@ -157,6 +158,11 @@ python scripts/ui_audit.py lint <app> --format markdown          # 40 craft rule
 python scripts/ui_audit.py palette <app>                        # theme role pairs vs WCAG contrast
 python scripts/ui_audit.py contrast '#B3FFFFFF' '#121316'        # supports #AARRGGBB over a background
 python scripts/device_matrix.py --out shots/ --profiles core     # adb stress capture; restores settings
+python scripts/mobile.py capture --name home --serial <id>       # one PNG + device metadata in .craft/; never overwrites
+python scripts/mobile.py inspect --name home --include-xml       # PNG + view tree (opt in: may hold private data)
+python scripts/mobile.py compare --before a.png --after b.png --output diff/  # pixel diff; never an aesthetic verdict
+python scripts/mobile.py test --flow assets/maestro/capture-home.yaml --app-id <pkg> --serial <id>  # local Maestro only
+python scripts/mobile.py guidelines --stack flutter --severity high  # Compose, Flutter, React Native, cross-stack tables
 python scripts/critique_score.py critique.json --save .craft/critique  # Craft Score 0-100 + trend
 python scripts/review_gate.py evidence.json --require-ready      # lints the evidence report
 python scripts/validate_skill.py                                 # self-check of this skill

@@ -206,7 +206,7 @@ RULES: list[Rule] = [
          re.compile(r'android:(?:textColor|background|tint|backgroundTint|strokeColor)="#[0-9A-Fa-f]+"'),
          skip_path=re.compile(r'values[^/\\]*[/\\]colors', re.I)),
     Rule('C004', 'medium', 'Secondary text made with alpha', 'Use onSurfaceVariant (or a defined role) and check 4.5:1.',
-         D + '03-system/color.md', ('.kt',), re.compile(r'\bon(?:Surface|Background|Primary|Secondary)\.copy\(\s*alpha\s*=')),
+         D + '03-system/color.md', ('.kt',), re.compile(r'\bon(?:Surface|Background|Primary|Secondary)\.copy\(\s*alpha\s*=|\bcolor\s*=\s*Color\.(?:White|Black)\.copy\(\s*alpha\s*=')),
     # Design / slop
     Rule('D002', 'low', 'Card nested inside a card', 'Flatten the inner level into a list or section.',
          D + '02-direction/anti-slop.md', ('.kt',), finder=_nested_cards),

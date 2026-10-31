@@ -4,7 +4,7 @@
 
 <p align="center">
   <img alt="Agent Skills" src="https://img.shields.io/badge/Agent%20Skills-compat%C3%ADvel-80D5D4?labelColor=0E1514">
-  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B%20sem%20depend%C3%AAncias-80D5D4?labelColor=0E1514">
+  <img alt="Python 3.9+" src="https://img.shields.io/badge/python-3.9%2B-80D5D4?labelColor=0E1514">
   <img alt="Licença Apache-2.0" src="https://img.shields.io/badge/licen%C3%A7a-Apache--2.0-80D5D4?labelColor=0E1514">
 </p>
 
@@ -120,6 +120,7 @@ Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dis
 | `project_probe.py` | Toolkit, SDKs, BOM, Material 3, bibliotecas, flags do manifest e obrigações por targetSdk |
 | `device_matrix.py` | 14 perfis via adb, PNG + árvore de views, restauração garantida |
 | `review_gate.py` | Valida o relatório de evidências e devolve `blocked` / `incomplete` / `ready_for_visual_review` / `verified_for_scope` |
+| `mobile.py` | Captura, inspeção, comparação de telas, Maestro local (`--serial`) e diretrizes por stack; captura, inspeção e comparação usam Pillow |
 | `validate_skill.py` | Autochecagem contra a especificação Agent Skills |
 
 <p align="center"><img src="docs/images/device-matrix.png" alt="Perfis da matriz de dispositivos" width="100%"></p>
@@ -129,13 +130,14 @@ Python 3.9+ só com a biblioteca padrão. Nada altera o seu app (a matriz de dis
 ```
 skills/android-premium-craft/
 ├── SKILL.md              roteador de 167 linhas: princípios, ciclo, modos, índice
-├── modules/              31 módulos em 11 grupos, carregados só quando o modo precisa
+├── modules/              32 módulos em 11 grupos, carregados só quando o modo precisa
 ├── research/             evidências (o que é prova vs. opinião) e fontes datadas
 ├── assets/compose/       CraftTheme.kt · CraftPreviews.kt · A11yCheckTest.kt
 ├── assets/               DESIGN_TEMPLATE.md · CRITIQUE_TEMPLATE.json · REVIEW_EVIDENCE_TEMPLATE.json · AGENTS_SNIPPET.md
-├── scripts/              ui_audit · critique_score · project_probe · device_matrix · review_gate · install · validate
-├── evals/                9 cenários + um app de exemplo propositalmente ruim
-└── tests/                53 testes unitários
+├── data/                 tabelas de diretrizes Compose, Flutter, React Native e multiplataforma
+├── scripts/              ui_audit · critique_score · project_probe · device_matrix · mobile · review_gate · install · validate
+├── evals/                9 cenários + um exemplo ruim e um app compilável com falhas plantadas
+└── tests/                81 testes unitários
 ```
 
 ## Evidência, não impressão

@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.3.0 - 2026-10-31
+
+Merged [Impeccable Mobile Studio](https://github.com/playertwo1/Impeccable-Mobile-Studio) (MIT) after running both projects on an emulator.
+- New `scripts/mobile.py`: `capture`, `inspect`, `compare`, `test` (local Maestro with `--serial`), `preview`, `guidelines`, `doctor`. Evidence is never overwritten by default. Capture, inspect and compare need Pillow (`requirements.txt`); everything else stays stdlib.
+- New `data/`: Compose, Flutter, React Native and cross-stack guideline tables from UI/UX Pro Max (MIT).
+- New `modules/05-components/control-and-data-states.md`; before/after procedure in `visual-feedback-loop.md`; Flutter, React Native and Wear notes.
+- `install_skill.py --replace` now verifies a staged copy, keeps the previous install under `.craft/install-backups`, restores it on failure, and refuses targets that leave the project through a link.
+- Lint C004 also catches `color = Color.White.copy(alpha = ...)`. Found by the smoke test; scrim backgrounds stay unflagged.
+- New `evals/fixtures/demo-app`: a buildable app with 13 planted faults and a control, covered by regression tests.
+- Official Impeccable is optional.
+
 ## v2.2.0 - 2026-10-30
 
 Ideas adapted from five MIT-licensed design skills (credited in `research/sources.md`).

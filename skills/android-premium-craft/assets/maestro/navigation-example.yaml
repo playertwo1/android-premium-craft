@@ -1,0 +1,8 @@
+# ADAPT selectors and names first; this is not a universal test.
+# Run with: maestro test -e APP_ID=com.example.app -e TARGET_TEXT=Agenda assets/maestro/navigation-example.yaml
+appId: ${APP_ID}
+---
+- launchApp:
+    stopApp: false
+- tapOn: ${TARGET_TEXT}
+- takeScreenshot: selected-screen

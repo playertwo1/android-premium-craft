@@ -1,5 +1,7 @@
 # Evals
 
+`fixtures/demo-app` is a small app that builds and runs, with faults listed in `PLANTED.md`; use it to smoke-test the tools on a device. `fixtures/sloppy-app` is source only.
+
 `evals.json` holds scenarios in the Anthropic evaluation format (`query`, `files`, `expected_behavior`). There is no built-in runner; use this protocol.
 
 1. Pick a model. Open a fresh session in a copy of this repo **without** the skill installed. Run each `query`, attaching `files`. Save the transcript.
