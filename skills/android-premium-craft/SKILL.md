@@ -3,7 +3,7 @@ name: android-premium-craft
 description: Use for any work on how a mobile or Android app looks, feels or behaves on screen, even if the request never says "Android" or "UI". Covers visual direction for a new app or dashboard, building or redesigning a screen or theme, accessibility questions, scoring or reviewing an app or screenshots, making an app less generic, tablets and foldables, insets, animation, a list that stutters or drops FPS, and UI release reviews. Not for backend, networking, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.3.2"
+  version: "2.3.3"
   updated: "2026-10-31"
 ---
 
@@ -56,25 +56,25 @@ Feedback rule: after step 5 or 7 finds a P0/P1, fix and repeat from step 5. Stop
 | `critique` (default) | Master critique: Craft Score 0-100 + scorecard, top 3-5 issues, persona red flags, quick wins, action plan. Write the design review before running lint or palette. `critique quick`: 2 strengths + 5 findings, no score | master-critique, critique-rubric, anti-slop | No |
 | `shape` | Brief + anchor + token proposal before any code | product-brief, aesthetic-anchors, 03-system | No |
 | `system` | Create or document the design system (`DESIGN.md` + theme code) | 03-system, tokens-and-theming | On request |
-| `build` | New screen or flow from an approved direction. Direction or `DESIGN.md` missing or only a template: do not stop; follow the project's theme, or pick an anchor, build, and list every assumption | 04, 05, states, visual loop | Yes |
+| `build` | New screen or flow from an approved direction. Direction or `DESIGN.md` missing or only a template: do not stop; follow the project's theme, or pick an anchor, build, and list every assumption. Give every screen state a preview, plus stress previews: dark, 200% font scale and RTL | 04, 05, states, visual loop | Yes |
 | `redesign` | Rework an existing screen to an approved direction | as `build` + critique | Yes |
 | `polish` | Alignment, rhythm, type, icons, states, micro-motion; no re-architecture | anti-slop, 03-system, motion | Yes |
 | `bolder` / `quieter` | Raise or lower visual intensity within the anchor | aesthetic-anchors, color, typography | Yes |
 | `distill` | Remove nested cards, duplicate labels, decoration, chrome | anti-slop, layout-and-hierarchy | Yes |
 | `touch` | Reach, targets, feedback, gestures, haptics | accessibility, states-and-feedback | On request |
 | `space` | Edge-to-edge, insets, IME, density, first viewport | edge-to-edge-insets, layout | On request |
-| `adapt` | Tablets, foldables, desktop windows, orientation, input devices | adaptive, form-factors | On request |
+| `adapt` | Tablets, foldables, desktop windows, orientation, input devices. Say that orientation and resizability locks are ignored on large screens at targetSdk 36 and the opt-out ends at 37, and name the official `adaptive` skill in the reply as the source for implementation detail (follow it if installed) | adaptive, form-factors | On request |
 | `animate` | Purposeful, interruptible motion with fallbacks | motion-system | On request |
 | `copy` | Labels, errors, empty states, i18n, RTL | content-and-copy | On request |
 | `harden` | Every state, edge case and stress configuration | states-and-feedback, device-matrix, accessibility | On request |
-| `accessibility` | TalkBack, 200% text, targets, contrast, keyboard, switch | accessibility | No unless asked |
+| `accessibility` | TalkBack, 200% text, targets, contrast, keyboard, switch. Report code findings apart from manual checks and say TalkBack was not run when it was not; give each fix in Compose (`contentDescription`, `minimumInteractiveComponentSize()`, `onSurfaceVariant` instead of alpha, `sp` for text); end with the manual TalkBack and 200% text script from the module for the user to run | accessibility | No unless asked |
 | `audit` | Probe + lint + palette check + rubric, ranked report | project-recon, critique-rubric | No |
 | `see` | Render/capture, then self-critique loop | visual-feedback-loop | No |
 | `matrix` | Capture the screen across the device matrix | device-matrix | No |
 | `visual-regression` | Version-correct screenshot tests, reviewed baselines | screenshot-testing | No auto-approve |
-| `performance` | Baseline then targeted fix then re-measure | performance | After baseline |
+| `performance` | Baseline then targeted fix then re-measure. Before the first edit, write out the baseline plan in your reply (Macrobenchmark `FrameTimingMetric`, release build, same device) and list suspects such as missing lazy `key`s or `collectAsState` as hypotheses. Give no FPS figure or gain without a same-device measurement; if asked for one, say it is `not-run` | performance | After baseline |
 | `reference` / `motion-study` | Extract principles from references or recordings | reference-and-motion-study | No |
-| `release-review` | PASS/FAIL/NOT-RUN per check with blockers | release-gates | No |
+| `release-review` | PASS/FAIL/NOT-RUN per check with blockers. Always write the evidence JSON from `assets/REVIEW_EVIDENCE_TEMPLATE.json` (no device or source is not a reason to stop: mark those checks `not_run` with the reason), run `review_gate.py` on it and report its decision, then list the exact steps to reach `verified_for_scope` | release-gates | Evidence file only |
 
 Typical chains: new app `shape -> system -> build -> see -> harden -> release-review`; "looks generic" `critique -> shape -> redesign -> polish -> see`; jank `performance -> animate -> performance`.
 

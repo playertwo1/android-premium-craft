@@ -53,9 +53,9 @@ Verify before using. When the project is below the gate, use the fallback and do
 | Autofill via `semantics { contentType = ... }` | Compose 1.8+ | Views `autofillHints` interop |
 | Expanded `HapticFeedbackType` set | Compose 1.8+ | `View.performHapticFeedback(HapticFeedbackConstants.*)` |
 | `MaterialExpressiveTheme`, `MotionScheme`, `MaterialShapes`, `ButtonGroup`, `LoadingIndicator`, `FloatingToolbar` | Material 3 1.4/1.5, most behind `@ExperimentalMaterial3ExpressiveApi` | Standard M3 components + theme springs |
-| Compose `Grid`, `FlexBox`, `MediaQuery` | Compose 1.11 era, experimental | `WindowSizeClass` + `Row`/`Column`/`LazyVerticalGrid` |
-| Compose Styles API | foundation 1.12 alpha, `compileSdk` 37, experimental opt-in | Theme tokens + modifiers |
-| Navigation 3, `NavigationEvent` | SDK 36+ for `NavigationEvent` | Nav2 + `BackHandler`/`PredictiveBackHandler` |
+| Compose `Grid`, `FlexBox`, `MediaQuery` | `Grid`/`FlexBox` appeared in 1.11 alpha and were promoted to stable in the 1.13 line (beta as of Oct 2026); `MediaQuery` unverified, treat as experimental | `WindowSizeClass` + `Row`/`Column`/`LazyVerticalGrid` |
+| Compose Styles API | experimental since foundation 1.11 alpha; the API changed shape repeatedly (1.13 uses `CommonStyle` and `Modifier.styleResolver`), so read the project's version before using it | Theme tokens + modifiers |
+| Navigation 3, `NavigationEvent` | `androidx.navigationevent` is a library (stable 1.2.0, Oct 2026), not SDK-gated; check the project's dependency | Nav2 + `BackHandler`/`PredictiveBackHandler` |
 | AGP test-suite screenshot tests | AGP 9.5 alpha, experimental | Roborazzi / Paparazzi / manual capture |
 
 ## Recon summary format

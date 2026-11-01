@@ -20,7 +20,7 @@ A control missing one of these is not finished. Verify on the capture, not in th
 ## Forms
 
 - Visible label above or in the field; a placeholder shows the format and never replaces the label.
-- Validate when leaving a touched field, then on each keystroke.
+- Validate when leaving a touched field; once an error shows, re-validate on each keystroke.
 - One-sentence error: what broke, why, what to do. It replaces helper text on the same line without pushing the layout.
 - Right keyboard per field, Next/Done action and autofill.
 - Disable submit only while the request runs, never at rest.

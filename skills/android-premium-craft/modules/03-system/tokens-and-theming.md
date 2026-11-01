@@ -69,7 +69,7 @@ object AppTheme {
 
 ## Compose Styles API
 
-A newer, experimental way to define styleable custom components (`Style`, `Modifier.styleable`, state-based styles). Requirements are strict (alpha foundation, `compileSdk` 37, opt-in). Use it only when the user wants it; follow the official `styles` skill. For Material components keep using the component `colors`/`shapes` parameters.
+A newer, experimental way to define styleable custom components (a styles DSL with state-based styles). The API has changed names and shape between foundation 1.11 and 1.13 alphas and betas, so read the project's version first. Requirements are strict (pre-stable foundation, opt-in, possibly a newer `compileSdk`). Use it only when the user wants it; follow the official `styles` skill. For Material components keep using the component `colors`/`shapes` parameters.
 
 ## Views and hybrid apps
 

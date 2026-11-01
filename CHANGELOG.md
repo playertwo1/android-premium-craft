@@ -1,5 +1,14 @@
 # Changelog
 
+## v2.3.3 - 2026-11-01
+
+Fixes from a 54-run with-and-without round (`evals/RESULTS.md`: 89/117 criteria with the skill, 32/117 without).
+- New `evals/run_evals.py`: isolated workspaces, with and without arms, blinded reviewer, a lock against two instances on one output folder. Removes the "Deliberately sloppy" hint from the copied fixture.
+- `release-review` always writes the evidence JSON and runs `review_gate.py` (release-review 0/9 to 9/9).
+- `accessibility`, `performance`, `adapt` and `build` modes state what the evals showed was skipped (manual script, baseline before edits, SDK 36/37 large-screen rules and the `adaptive` handoff, stress previews). `no-fake-fps` did not improve over the baseline and `accessibility-audit` improved only partly.
+- Modules checked against developer.android.com: `NavigationEvent` is an androidx library, not SDK 36 only; Compose `Grid` and `FlexBox` are promoted to stable in the 1.13 line; the Styles API changed shape; dialogs use the extra-large shape, not medium; one validation-timing contradiction. About 20 of the 32 modules were read closely; the others were skimmed.
+- GitHub Actions workflow runs the unit tests and `validate_skill.py`.
+
 ## v2.3.2 - 2026-10-31
 
 - Pasting `AGENTS_SNIPPET.md` into the app's `CLAUDE.md` raised skill loading from 13 of 24 runs to 24 of 24, with no false trigger in 3 negative runs (`evals/RESULTS.md`). The docs now say so.
