@@ -48,7 +48,7 @@ Height classes (compact < 480, medium 480-899, expanded >= 900) matter for lands
 - Constrain reading width (~640dp) and form width (~560dp); center or split the rest, do not stretch text lines across 1200dp.
 - Images: switch aspect ratios or crop focal points per width.
 - Dialogs become larger centered surfaces; bottom sheets may become side sheets on expanded widths.
-- Use `BoxWithConstraints`/`Modifier.layout` for component-level decisions (a card that becomes horizontal when wide). Newer experimental Compose `MediaQuery`, `Grid` and `FlexBox` APIs can express this more directly; check the version gate in [project-recon.md](../01-discover/project-recon.md).
+- Use `BoxWithConstraints`/`Modifier.layout` for component-level decisions (a card that becomes horizontal when wide). Newer Compose `MediaQuery` (experimental), `Grid` and `FlexBox` (stable from the 1.13 line) APIs can express this more directly; check the version gate in [project-recon.md](../01-discover/project-recon.md).
 
 ## Postures and input devices
 

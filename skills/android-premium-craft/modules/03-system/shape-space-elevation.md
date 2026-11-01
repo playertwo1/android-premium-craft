@@ -44,7 +44,7 @@ Material 3 shape tokens (dp corner radius):
 | none | 0 | Full-bleed media, editorial |
 | extraSmall | 4 | Text field, snackbar, tooltips |
 | small | 8 | Chips, small buttons, menus |
-| medium | 12 | Cards, dialogs on compact |
+| medium | 12 | Cards |
 | large | 16 | FAB, navigation drawer, large cards |
 | largeIncreased (Expressive) | 20 | Emphasized large components |
 | extraLarge | 28 | Bottom sheets, dialogs, hero containers |

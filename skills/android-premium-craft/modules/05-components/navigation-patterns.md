@@ -36,7 +36,7 @@ Rules: every top-level destination has an icon **and** a label; selected state u
 ## Back and predictive back
 
 - Apps targeting SDK 36 get predictive back system animations by default; `onBackPressed()` is no longer called [lint N001] and `KEYCODE_BACK` is not dispatched [N002].
-- Use the navigation library's built-in back handling (Navigation 2.8+/Navigation 3 support predictive back). For custom interception: `BackHandler`/`PredictiveBackHandler` in Compose, or the newer `NavigationEvent` APIs (`NavigationBackHandler`, SDK 36+; follow the official `navigation-event` skill).
+- Use the navigation library's built-in back handling (Navigation 2.8+/Navigation 3 support predictive back). For custom interception: `BackHandler`/`PredictiveBackHandler` in Compose, or the newer `NavigationEvent` APIs (`NavigationBackHandler`, `androidx.navigationevent`, a library with no SDK 36 requirement; follow the official `navigation-event` skill).
 - Intercept back only for real reasons: unsaved input (offer discard/keep), closing an in-screen layer (sheet, search, selection mode). Never trap the user at the root.
 - Predictive back previews the destination: in-screen layers (sheets, expanded search, side panes) should animate with the gesture progress, and cancelling must restore state exactly.
 - `android:enableOnBackInvokedCallback="false"` [N004] is a temporary escape hatch, not a fix.
