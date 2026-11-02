@@ -65,6 +65,12 @@
 - Impeccable Mobile Studio, MIT, merged in v2.3 (`mobile.py`, stack tables, state rules, installer safeguards; license at `scripts/mobile.LICENSE-MIT.txt`): https://github.com/playertwo1/Impeccable-Mobile-Studio
 - diagram-design, MIT (ADRs for skill decisions, SKILL.md size cap, accessible SVG contract): https://github.com/cathrynlavery/diagram-design
 
+## Adapted ideas
+
+- unslop by Damir Sokolovsky (@heydamir), CC BY 4.0, https://github.com/heydamir/unslop: the five-line direction, quiet chrome with one or two rich moments, triage by amount of slop, ordered passes, the template check and rules for stat cards and chart hierarchy. Rewritten for Android and Material 3; web tokens, fonts and image-generation steps were not taken.
+
+- awesome-design-md by VoltAgent, MIT, https://github.com/VoltAgent/awesome-design-md: only the DESIGN.md section pattern (do and don't, agent quick reference, known gaps) was taken. The brand analyses are web-only and were not used.
+
 ## Community discussions
 
 - r/ProductManagement, "All vibecoded apps look the same" (Jan 2026), snapshot: https://reddit.sentinel-team.org/posts/1qccb1g/snapshots/2026-01-15T02%3A51%3A22.564978Z

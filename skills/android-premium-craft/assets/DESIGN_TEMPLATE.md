@@ -64,6 +64,22 @@ Numbers: tabular figures (`tnum`).
 - Screenshot tests: tool, configurations
 - Performance: journeys measured and budgets
 
+## Do and don't
+- Do: (3-5 rules an agent must follow on every screen, in this app's words)
+- Don't: (3-5 things this app never does, for example "no animated balances")
+
+## Agent quick reference
+| Need | Token or rule |
+|---|---|
+| Primary action | `colorScheme.primary` (one per screen) |
+| Secondary text | `onSurfaceVariant` |
+| Spacing | (list the named steps) |
+| Heading / body | (list the type roles) |
+Prompt examples: "Add a <component> using only these tokens", "Review <screen> against Do and don't".
+
+## Known gaps
+What this file does not know yet: unconfirmed values, substitute fonts, brand colors without a source, states not designed. Mark each as `unknown` instead of guessing.
+
 ## Decisions and exceptions
 | Date | Decision | Why | Approved by |
 |---|---|---|---|

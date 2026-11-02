@@ -66,4 +66,4 @@ Material 3 shape tokens (dp corner radius):
 
 - Density changes spacing and visual size, **never** the 48dp touch target. Dense lists keep 48dp rows minimum.
 - Offer density through layout (more columns, compact rows on expanded windows), not through smaller text.
-- Measure the first viewport: list how many meaningful items are visible on a 360x800dp phone. If chrome (bars, hero, banners) takes more than ~35% of the viewport, distill.
+- Measure the first viewport: list how many meaningful items are visible on a 360x800dp phone; the chrome limit is in [layout-and-hierarchy.md](../04-layout/layout-and-hierarchy.md).

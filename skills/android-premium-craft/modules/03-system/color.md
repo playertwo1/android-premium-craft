@@ -16,6 +16,8 @@
 | Strong brand | Static brand scheme generated from the brand seed (Material Theme Builder or material-color-utilities); dynamic color off, or harmonize semantic colors with it |
 | Brand plus personalization | Dynamic color for neutrals and secondary, brand kept for primary or one hero element |
 
+The accent (`primary`) covers a few percent of the screen: the primary action, the selection and the one key figure. Rich color beyond that belongs to the screen's one or two moments (a chart, a rendered object), not to chrome.
+
 Never ship the baseline sample scheme (`#6750A4` purple). Generate light **and** dark schemes from the same seed, plus medium- and high-contrast variants if the app supports custom contrast.
 
 ## Use roles, not colors

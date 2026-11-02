@@ -39,6 +39,18 @@ Success: payment started from overview in <= 2 taps; no clipped amounts at 200%
 Assumptions: (list anything the user did not confirm)
 ```
 
+## Direction in five lines
+
+After the brief and before choosing an anchor, write five short lines from what the product does and who it is for, never from what is trending:
+
+- **Product**: what it does, for whom, in one plain sentence.
+- **Character**: two or three concrete words ("calm, exact, a little warm"). Clean, modern, sleek, minimal and premium are banned: they describe every template.
+- **World**: the place or material the product belongs to (paper and ink, instruments and night shifts, maps and window light). It sets the tint of the neutrals, the accent and any illustration.
+- **Moments**: one or two places where the screen gets rich color, material and detail, taken from what the product shows (a rendered card, a chart whose colors each mean a series). Everything else stays quiet.
+- **Signature**: one small detail only this product would have, used consistently and nowhere else.
+
+A real brand color or typeface stays and anchors the direction; a violet-to-blue gradient or sparkle does not count as brand unless the user says so. Idea adapted from unslop (see [sources](../../research/sources.md)).
+
 ## Brand truth: never theme a real brand from memory
 
 When the app is for a named real brand, brand colors recalled from training data are confidently wrong. **Memory hex = fail.**

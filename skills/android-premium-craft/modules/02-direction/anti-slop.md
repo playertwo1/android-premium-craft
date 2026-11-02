@@ -3,6 +3,8 @@
 These patterns come from shared defaults in templates and training data. Each one is not always wrong, but together they say "nobody decided anything". Check every screen before calling it done. Lint rule ids from `ui_audit.py lint` are in brackets.
 
 ## Contents
+- Triage and pass order
+- Where richness goes
 - Color and surfaces
 - Layout and structure
 - Typography and copy
@@ -11,6 +13,19 @@ These patterns come from shared defaults in templates and training data. Each on
 - Dated tells (2025-2026)
 - Removal is not enough
 - The 30-second squint test
+
+## Triage and pass order
+
+Read the screen honestly before planning changes.
+- **Heavy slop** (many tells across color, type, icons and copy): run the full process.
+- **Light slop** (mostly designed, a few tells left): fix only what you found, keep the palette, type and layout, and put bigger ideas in the report as suggestions.
+- **No slop**: say so plainly and suggest at most two or three small refinements with exact values. Never change a good screen just to make it different.
+
+When many things change, work one layer at a time across the whole screen, in this order: spacing, color, icons, copy, type, layout, details, imagery, motion. Spacing first because everything reads differently once the rhythm is right; copy before type and layout because headline length decides size and position; motion last because the screen must work without it.
+
+## Where richness goes
+
+Slop spreads color and effects over the chrome (backgrounds, buttons, borders, labels). Craft keeps the chrome quiet and puts the richness into one or two moments of content that people remember: a chart drawn with care, a card or object rendered in code with real materials, an image from the product's world. A screen with no such moment is only clean.
 
 ## Color and surfaces
 
@@ -95,5 +110,6 @@ Render the screen, blur your eyes (or downscale to 25%) and answer:
 2. Can you tell the primary action from secondary ones?
 3. Are there more than three visual weights competing?
 4. Would someone recognize this product from this screenshot without the logo?
+5. Template check: swap the product name for another product's. Would the screen still fit? If yes, push the direction harder in the copy, the moment and the signature detail.
 
-Two "no" answers means the direction is not done; go back to [aesthetic-anchors.md](aesthetic-anchors.md).
+Two "no" answers (or a yes on 5) means the direction is not done; go back to [aesthetic-anchors.md](aesthetic-anchors.md).

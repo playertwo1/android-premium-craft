@@ -48,13 +48,12 @@ Also capture: one loading, one empty and one error state if reachable; the scree
 
 For each screen, write short notes:
 1. **Three-second test**: what is this screen for, and what is the first, second, third thing seen?
-2. **Squint test** (downscale to 25%): is the primary action dominant? How many competing weights?
-3. **Specificity verdict**: could an unrelated product ship this screen unchanged? Which anchor does it read as (or "Material template")? Count [anti-slop](../02-direction/anti-slop.md) patterns seen.
+2. **Squint and template check** (the questions at the end of [anti-slop](../02-direction/anti-slop.md)): is the primary action dominant, and could an unrelated product ship this screen unchanged? Which anchor does it read as (or "Material template")? Count the anti-slop patterns seen.
 4. **Dimension scores 0-4** with evidence, using the anchors in [critique-rubric.md](critique-rubric.md): hierarchy, layout, typography, color, consistency, states, touch, accessibility, platform, motion. Measure targets in the view dump; check text at 200%.
 5. **Personas** (pick 2-3, below): walk the primary task as each and note exactly what broke.
 6. **Cognitive load**: decision points with more than four visible options; information the user must remember across screens.
 7. **Emotional journey**: the riskiest moment (payment, delete, submit). Is there reassurance and recovery?
-8. **Cover the logo**: swap the app name and the main noun. If the screen would work unchanged for a competitor or another industry, specificity is at most 2.
+8. **Specificity cap**: if the template check says the screen would work unchanged for a competitor or another industry, specificity is at most 2.
 9. **Edges**: follow the start edge of every text block down the screen and count distinct x positions. Two or three reused on purpose is composed; five or more means things were placed one at a time.
 10. **Sameness across screens**: write one word per screen for its layout (list, form, detail, grid, dashboard). The same card-list shape on every screen is the template showing.
 11. **Collisions**: anything covering content at any scroll position or state - FAB over the last list item, snackbar over the primary action, IME over the submit button, content under the system bars.
@@ -67,7 +66,7 @@ For each screen, write short notes:
 
 ```bash
 python scripts/project_probe.py <app>                       # versions + platform mandates
-python scripts/ui_audit.py lint <app> --format json         # 39 craft rules
+python scripts/ui_audit.py lint <app> --format json         # 40 craft rules
 python scripts/ui_audit.py palette <app>                    # theme contrast
 ```
 

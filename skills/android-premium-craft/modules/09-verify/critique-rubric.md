@@ -6,7 +6,7 @@ A shared vocabulary for reviews. The rubric structures judgment; it is not a mea
 - The ten dimensions
 - Scoring anchors
 - Severity
-- Critique report format
+- Quick critique format
 
 ## The ten dimensions
 
@@ -50,7 +50,9 @@ Quick critiques present the scores as a profile (e.g., `H3 L3 T2 C3 S2 St1 To3 A
 
 Prioritize by user impact x frequency, not by how easy the fix is.
 
-## Critique report format
+## Quick critique format
+
+For `critique quick`. The full report is in [master-critique.md](master-critique.md).
 
 ```markdown
 ## Critique - <screen> (<device/preview>, <theme>, font <scale>)
