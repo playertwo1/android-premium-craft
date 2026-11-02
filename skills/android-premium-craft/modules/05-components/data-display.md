@@ -15,6 +15,10 @@ Data UI is judged on two things: can the user find the number they need, and can
 - Every metric has a label, unit, period and freshness ("Revenue - Oct - updated 14:32").
 - Comparisons say against what: "+12% vs Sep", with sign and direction icon, not color alone.
 - Drill-down: tapping a metric opens its detail; the tile shows that it is tappable.
+- Metric cards are numbers: label, large figure and the change with what it compares to. No sparklines, mini bars or decorative icons added to fill them. A card may hold a real-looking object only when it is the thing its number counts (a receipt beside paid revenue).
+- Give the grid a rhythm: a few compact metrics above one wide chart, or a chart beside a narrower list. Equal cards each holding the same kind of content read as a template.
+- One main chart is clearly the largest data element; other data is smaller and different in kind (a ranked list with thin bars, a short table), never a second chart of the same size.
+- Mock data tells one story: if a list shows invoice INV-0142 for a client, the card beside it shows the same client, number and amount.
 - On expanded widths, add columns and side-by-side comparisons instead of stretching tiles.
 
 ## Numbers
@@ -36,7 +40,7 @@ Data UI is judged on two things: can the user find the number they need, and can
 
 - Start bar axes at zero; label axes with units; at most 5-6 gridlines in `outlineVariant`.
 - Direct labels beat legends; if a legend is needed, put it above the chart in the same order as the data.
-- Color: one highlight color against neutral series; categorical palettes checked for color-vision deficiency; never red/green only.
+- Color: one highlight color against neutral series, the accent on the one thing that matters (the current period, the tracked line); categorical palettes checked for color-vision deficiency; never red/green only.
 - Touch: tap or drag to inspect points with a tooltip; targets for points are 48dp even when marks are small.
 - Implement with `Canvas` or a maintained chart library (e.g., Vico for Compose); keep drawing in the draw phase and avoid recomposing on every pointer move.
 

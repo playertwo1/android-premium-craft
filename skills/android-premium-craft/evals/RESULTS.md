@@ -1,10 +1,26 @@
 # Eval results
 
 ## Contents
+- v2.3.4, unslop-inspired rules
 - v2.3.3, with and without, blinded review
 - v2.3.2, trigger check with the snippet
 - v2.3.1, trigger check only
 - v2.3.0, first with-and-without run
+
+## 2026-11-02, skill v2.3.4, claude-sonnet-5-5, with-skill arm only
+
+Check for side effects of the unslop-inspired rules (five-line direction, triage and layer order, richness budget, data and imagery rules). Three runs each, same runner and reviewer as v2.3.3.
+
+| Scenario | v2.3.3 | v2.3.4 |
+|---|---:|---:|
+| critique-sloppy-home | 19/24 | 18/24 |
+| shape-finance-dashboard | 14/15 | 15/15 |
+| less-generic | 9/12 | 8/12 |
+| **Total** | **42/51** | **41/51** |
+
+After the consolidation of duplicated module text, the full with-skill round (9 scenarios, 3 runs each) gave 89/117, the same total as v2.3.3, and 71/93 excluding skill-specific criteria (68/93 before). Per scenario: critique-sloppy-home 15/24 (19 before; it has ranged 15 to 19 across five runs of three), shape 15/15, build 10/15, less-generic 7/12, no-fake-fps 7/12, release-review 9/9, adapt-tablet 15/15, accessibility 8/12, negative 3/3. Totals are unchanged, so the cuts did not cost measurable quality.
+
+The earlier three-scenario check: no measurable change, one criterion of difference is noise. The criteria do not score what these rules target (direction quality, restraint, data honesty), so this shows only that nothing regressed. The without arm was not re-run.
 
 ## 2026-11-01, skill v2.3.3, claude-sonnet-5-5, with and without, blinded review
 

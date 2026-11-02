@@ -1,5 +1,16 @@
 # Changelog
 
+## v2.3.4 - 2026-11-02
+
+Ideas adapted from [unslop](https://github.com/heydamir/unslop) (CC BY 4.0, credited in `research/sources.md`), rewritten for Android and Material 3.
+- `product-brief.md`: the five-line direction (product, character with banned generic words, world, moments, signature). `shape` mode asks for it.
+- `anti-slop.md`: triage (heavy, light or no slop), a fixed layer order for `redesign` and `polish`, "where richness goes", and a template check in the squint test.
+- `color.md`: the accent covers a few percent of the screen. `data-display.md`: metric cards are numbers, one main chart, varied grid, mock data that tells one story. `iconography-imagery.md`: one-sentence test for art and an honest empty slot.
+- `DESIGN_TEMPLATE.md`: "Do and don't", "Agent quick reference" and "Known gaps" sections (pattern from [awesome-design-md](https://github.com/VoltAgent/awesome-design-md), MIT; its web brand analyses were not used).
+- Consolidation: the squint, template and logo tests live once in `anti-slop.md` and `master-critique.md` points to them; empty, error, offline, number, table, chart and dark rules were removed from `control-and-data-states.md` where `states-and-feedback.md`, `data-display.md` and `color.md` already cover them; the official-skills hand-off table lives only in `SKILL.md`; `agent-setup.md` points to the eval runner instead of repeating the protocol; the chrome limit is stated once; lint rule count fixed (40).
+- Full with-skill round after the cuts: 89/117, same as v2.3.3 (`evals/RESULTS.md`). `critique-sloppy-home` varies between 15 and 19 of 24 from run to run.
+- Measured on `less-generic`, `critique-sloppy-home` and `shape-finance-dashboard` (with skill, 3 runs each): 41/51 against 42/51 before. No measurable gain or loss; these rules target quality the criteria do not score.
+
 ## v2.3.3 - 2026-11-01
 
 Fixes from a 54-run with-and-without round (`evals/RESULTS.md`: 89/117 criteria with the skill, 32/117 without).

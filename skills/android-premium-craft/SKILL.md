@@ -3,7 +3,7 @@ name: android-premium-craft
 description: Use for any work on how a mobile or Android app looks, feels or behaves on screen, even if the request never says "Android" or "UI". Covers visual direction for a new app or dashboard, building or redesigning a screen or theme, accessibility questions, scoring or reviewing an app or screenshots, making an app less generic, tablets and foldables, insets, animation, a list that stutters or drops FPS, and UI release reviews. Not for backend, networking, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.3.3"
+  version: "2.3.4"
   updated: "2026-10-31"
 ---
 
@@ -54,11 +54,11 @@ Feedback rule: after step 5 or 7 finds a P0/P1, fix and repeat from step 5. Stop
 | Mode | Purpose | Load | Edits |
 |---|---|---|---|
 | `critique` (default) | Master critique: Craft Score 0-100 + scorecard, top 3-5 issues, persona red flags, quick wins, action plan. Write the design review before running lint or palette. `critique quick`: 2 strengths + 5 findings, no score | master-critique, critique-rubric, anti-slop | No |
-| `shape` | Brief + anchor + token proposal before any code | product-brief, aesthetic-anchors, 03-system | No |
+| `shape` | Brief + the five-line direction (product, character, world, moments, signature) + anchor + token proposal before any code | product-brief, aesthetic-anchors, 03-system | No |
 | `system` | Create or document the design system (`DESIGN.md` + theme code) | 03-system, tokens-and-theming | On request |
 | `build` | New screen or flow from an approved direction. Direction or `DESIGN.md` missing or only a template: do not stop; follow the project's theme, or pick an anchor, build, and list every assumption. Give every screen state a preview, plus stress previews: dark, 200% font scale and RTL | 04, 05, states, visual loop | Yes |
-| `redesign` | Rework an existing screen to an approved direction | as `build` + critique | Yes |
-| `polish` | Alignment, rhythm, type, icons, states, micro-motion; no re-architecture | anti-slop, 03-system, motion | Yes |
+| `redesign` | Rework an existing screen to an approved direction. Triage first (heavy, light or no slop; a sound screen gets two or three refinements, not a rework), then fix in layers: spacing, color, icons, copy, type, layout, details, imagery, motion | as `build` + critique, anti-slop | Yes |
+| `polish` | Alignment, rhythm, type, icons, states, micro-motion; no re-architecture. Same triage and layer order as `redesign` | anti-slop, 03-system, motion | Yes |
 | `bolder` / `quieter` | Raise or lower visual intensity within the anchor | aesthetic-anchors, color, typography | Yes |
 | `distill` | Remove nested cards, duplicate labels, decoration, chrome | anti-slop, layout-and-hierarchy | Yes |
 | `touch` | Reach, targets, feedback, gestures, haptics | accessibility, states-and-feedback | On request |
@@ -146,7 +146,7 @@ When the task is mostly one of these, follow the official skill (Google's `andro
 | Compose Styles API (experimental) | `styles` |
 | XML to Compose | `migrate-xml-views-to-jetpack-compose` |
 | Test infrastructure, screenshot test setup | `testing-setup` |
-| Wear OS / TV / XR glasses / widgets | `wear-compose-m3`, `leanback-to-compose-tv-migration`, `display-glasses-with-jetpack-compose-glimmer`, `glance-canonical-layouts` |
+| Wear OS UI and widgets, TV, parked car apps, XR glasses, home-screen widgets | `wear-compose-m3`, `wear-widgets`, `leanback-to-compose-tv-migration`, `android-for-cars-parked-apps`, `display-glasses-with-jetpack-compose-glimmer`, `glance-canonical-layouts` |
 
 Not installed? Proceed with this skill's module and the linked developer.android.com page.
 

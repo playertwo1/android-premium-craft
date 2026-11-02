@@ -66,4 +66,4 @@ Use fully qualified MCP tool names when instructing other agents (for example `m
 
 ## Evals: proving the skill helps
 
-`evals/evals.json` contains scenarios in the Anthropic evaluation format (query, files, expected_behavior). Run each scenario with and without the skill on the same model and compare against the expected behaviors; record results in `evals/RESULTS.md`. Re-run after every significant edit to the skill and test on every model you support (fast and large models differ in how much guidance they need).
+Protocol and runner: `evals/README.md` and `evals/run_evals.py` (with and without arms, blinded review). Results: `evals/RESULTS.md`. Re-run after every significant edit and on every model you support.

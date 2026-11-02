@@ -57,11 +57,4 @@ See [adaptive.md](../04-layout/adaptive.md). Extra rules: support free resizing 
 
 ## Official skills to hand off to
 
-| Surface | Skill |
-|---|---|
-| Wear OS UI | `wear-compose-m3` |
-| Wear widgets/tiles | `wear-widgets` |
-| TV migration | `leanback-to-compose-tv-migration` |
-| Parked car apps | `android-for-cars-parked-apps` |
-| Display glasses | `display-glasses-with-jetpack-compose-glimmer` |
-| Home-screen widgets | `glance-canonical-layouts` |
+See the hand-off table in `SKILL.md` (Wear OS, Wear widgets, TV, parked car apps, display glasses, Glance widgets).

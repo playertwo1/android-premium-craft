@@ -36,4 +36,7 @@
 
 - Illustration is optional; a precise sentence and one action beat a generic drawing. If used, one consistent style, few colors from the theme roles, and tinted for dark theme.
 - Size illustrations so the action stays above the fold at 200% font scale.
+- Say what an illustration shows in one plain sentence and why it belongs to this product. If you cannot, it is decoration.
+- When art is missing and cannot be made now, leave a plain surface slot of the exact size and corner radius with no text inside, and put the prompt or brief in the report, never on the screen. Nothing unfinished can ship by accident.
+- Do not put text, fake buttons or a logo inside a generated image; text is real text in the layout.
 - Lottie/animated illustrations: only with a static fallback, reduced-motion respect and a file-size budget.
