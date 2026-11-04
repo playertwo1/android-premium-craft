@@ -3,6 +3,7 @@
 
 For UI work, load the `android-premium-craft` skill (modes: critique, shape, build, redesign, polish, see, harden, release-review).
 - Read `DESIGN.md` first. If it is missing or a blank template, follow the project's theme, do the work and list your assumptions. Use theme roles and tokens only: no hex colors, raw `fontSize` or ad-hoc dp in screens.
+- Quality bar: Apple HIG restraint (content before chrome, one accent, hierarchy by size and weight, brief cancelable motion), built with Material components; never imitate iOS.
 - One primary action per screen; the job's key fact visible in the first viewport.
 - Touch targets >= 48dp (`minimumInteractiveComponentSize()`); 8dp between targets.
 - Every icon-only control has a `contentDescription`; custom controls expose role and state; gestures have visible or `customActions` alternatives.

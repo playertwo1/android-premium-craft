@@ -99,11 +99,11 @@ Como a nota é calculada (`scripts/critique_score.py`, então o mesmo julgamento
 
 Todo modo executa uma parte desse ciclo. O passo central é **Ver**: o agente renderiza previews do Compose, captura o aparelho via adb ou usa o Maestro MCP, e revisa os pixels com uma rubrica de 10 dimensões. Revisão de código nunca é chamada de revisão visual. Os ciclos de correção param depois de duas passadas e reportam o que sobrou.
 
-## Direção visual: 10 âncoras
+## Direção visual: 11 âncoras
 
 <p align="center"><img src="docs/images/anchors.png" alt="Dez âncoras estéticas com paletas" width="100%"></p>
 
-"Deixa limpo e moderno" produz a média dos dados de treino. Em vez disso, o agente escolhe **uma âncora** a partir do domínio do produto (finanças, saúde, mídia, B2B, infantil...) e ela decide cor, tipografia, forma, densidade, elevação e motion. Cada âncora documenta sua marca registrada e a armadilha que a estraga.
+"Deixa limpo e moderno" produz a média dos dados de treino. Em vez disso, o agente escolhe **uma âncora** a partir do domínio do produto (finanças, saúde, mídia, B2B, infantil...) e ela decide cor, tipografia, forma, densidade, elevação e motion. Cada âncora documenta sua marca registrada e a armadilha que a estraga. A imagem mostra as dez primeiras; a décima primeira, *Refined Restraint*, aplica as Human Interface Guidelines da Apple ([`apple-hig-principles.md`](skills/android-premium-craft/modules/02-direction/apple-hig-principles.md)) com componentes Material, sem imitar o iOS.
 
 ## Ferramentas
 
@@ -146,7 +146,7 @@ Toda afirmação num relatório recebe um status: `observed`, `verified-in-code`
 
 ## Perguntas frequentes
 
-- **Só tema escuro?** Não. Escuro é uma âncora (Tonal Calm) entre dez; o padrão é claro + escuro + cor dinâmica.
+- **Só tema escuro?** Não. Escuro é uma âncora (Tonal Calm) entre onze; o padrão é claro + escuro + cor dinâmica.
 - **Só Compose?** Compose primeiro, XML Views coberto, e um mapa de conceitos para Flutter, React Native e Compose Multiplatform.
 - **Vai atualizar AGP/Compose/Material?** Não. Confere as versões e usa alternativas; upgrade só se você pedir.
 - **Precisa de aparelho?** Não, mas fica melhor com um. Sem aparelho ou previews, as checagens visuais saem como `not-run`.

@@ -19,7 +19,7 @@
 
 It gives the agent three things it does not have on its own:
 
-1. **Decisions** - ten named visual directions, a design-token system and an anti-slop catalogue, so the output stops looking like every other generated app.
+1. **Decisions** - eleven named visual directions (one is the Apple HIG quality bar rebuilt in Material), a design-token system and an anti-slop catalogue, so the output stops looking like every other generated app.
 2. **Craft knowledge** - 32 focused modules on Material 3 / Expressive, layout, edge-to-edge, adaptive, components, forms, states, copy, motion, accessibility and performance, up to date with Android 16/17 platform rules.
 3. **Ways to check its own work** - a master critique with a 0-100 Craft Score, a 40-rule lint, a theme-contrast checker, a device-matrix capture that restores your phone, and an honest release gate. No invented FPS, no fake scores.
 
@@ -32,7 +32,7 @@ It gives the agent three things it does not have on its own:
 - [Modes](#modes)
 - [The craft loop](#the-craft-loop)
 - [Master critique: score your app](#master-critique-score-your-app)
-- [Visual direction: 10 anchors](#visual-direction-10-anchors)
+- [Visual direction: 10 anchors](#visual-direction-11-anchors)
 - [Tools](#tools)
 - [Example session](#example-session)
 - [What is inside](#what-is-inside)
@@ -189,11 +189,11 @@ How the number is made (`scripts/critique_score.py`, so the same judgments alway
 
 Personas used in the walkthrough: **Casey** (one hand, on the bus), **Sam** (TalkBack + 200% text), **Rita** (65, first app), **Alex** (tablet power user) and **Riley** (stress tester).
 
-## Visual direction: 10 anchors
+## Visual direction: 11 anchors
 
 <p align="center"><img src="docs/images/anchors.png" alt="Ten aesthetic anchors: Quiet Utility, Tonal Calm, Expressive Material, Editorial, Precision Pro, Immersive Media, Warm Organic, Bold Brand, Playful, Glanceable" width="100%"></p>
 
-"Make it clean and modern" produces the average of the training data. Instead the agent picks **one anchor** from the product's domain register (finance, health, media, B2B, kids...) and lets it decide color, type, shape, density, elevation and motion. Each anchor documents its signature move and the trap that ruins it. Details: [`aesthetic-anchors.md`](skills/android-premium-craft/modules/02-direction/aesthetic-anchors.md) and [`anti-slop.md`](skills/android-premium-craft/modules/02-direction/anti-slop.md).
+"Make it clean and modern" produces the average of the training data. Instead the agent picks **one anchor** from the product's domain register (finance, health, media, B2B, kids...) and lets it decide color, type, shape, density, elevation and motion. Each anchor documents its signature move and the trap that ruins it. The image shows the first ten; the eleventh, *Refined Restraint*, applies the Apple Human Interface Guidelines ([`apple-hig-principles.md`](skills/android-premium-craft/modules/02-direction/apple-hig-principles.md)) with Material components. Details: [`aesthetic-anchors.md`](skills/android-premium-craft/modules/02-direction/aesthetic-anchors.md) and [`anti-slop.md`](skills/android-premium-craft/modules/02-direction/anti-slop.md).
 
 ## Tools
 
