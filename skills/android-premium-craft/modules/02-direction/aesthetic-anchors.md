@@ -4,7 +4,7 @@
 
 ## Contents
 - How to choose
-- The ten anchors (recipe per anchor)
+- The eleven anchors (recipe per anchor)
 - Mixing and tuning
 - Writing the anchor into DESIGN.md
 
@@ -15,7 +15,7 @@
 3. Pick by the user's job, not by the designer's taste: dense jobs want *Precision Pro*, glance jobs want *Glanceable*, content jobs want *Editorial* or *Immersive Media*.
 4. Present the user two anchors with one sentence each and a token preview; build only after a choice.
 
-## The ten anchors
+## The eleven anchors
 
 Each recipe gives color, type, shape, density, elevation, motion, signature move and the trap to avoid. Values are starting points to tune against the real content.
 
@@ -117,6 +117,17 @@ For widgets, Wear OS, car, ambient, quick-status apps.
 - Motion: none or minimal; battery-aware.
 - Signature: understandable in one second at arm's length.
 - Trap: shrinking a phone screen into a widget.
+
+### 11. Refined Restraint
+For premium consumer apps, personal finance, productivity, health, anything the brief calls "elegant". The Apple HIG quality bar built with Material components; rules in [apple-hig-principles.md](apple-hig-principles.md).
+- Color: near-white and near-black neutral surfaces; one accent on the primary action background, the selected destination and badges only; grouping by `surfaceContainerLow..High`, not borders.
+- Type: one family (system or one headline face); a large bold screen title collapsing on scroll; hierarchy by size and weight, no light weights.
+- Shape: medium (12-16dp) on grouped sections, inset from the screen edges; consistent radius everywhere.
+- Density: comfortable; inset grouped lists with 56dp+ rows, 16-24dp margins, secondary actions behind disclosure.
+- Elevation: content layer flat; only the functional layer (app bar, navigation, FAB) separates from scrolling content.
+- Motion: brief, no-bounce springs, shared element for drill-in, nothing on repeated interactions.
+- Signature: the screen feels calm because almost nothing competes with the content; the one accent is unmissable.
+- Trap: iOS cosplay (SF fonts, chevrons on every row, glass everywhere, Cancel/Done sheets), and restraint so gray the primary action vanishes.
 
 ## Mixing and tuning
 

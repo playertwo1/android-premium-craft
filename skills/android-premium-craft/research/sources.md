@@ -31,6 +31,15 @@
 - Screenshot testing with AGP test suites (experimental): https://developer.android.com/studio/preview/compose-screenshot-testing-with-testsuites
 - Official Android skills: https://github.com/android/skills and https://developer.android.com/tools/agents/android-skills
 
+## Apple Human Interface Guidelines
+
+Read 2026-11-03 through the JSON behind each page (`https://developer.apple.com/tutorials/data/design/human-interface-guidelines/<page>.json`). Distilled and rewritten for Android in `modules/02-direction/apple-hig-principles.md`; no Apple text or assets are copied.
+- Index: https://developer.apple.com/design/human-interface-guidelines
+- Design principles (reintroduced 2026-06-08), designing for iOS: `/design-principles`, `/designing-for-ios`
+- Foundations: `/layout`, `/typography`, `/color`, `/dark-mode`, `/materials`, `/motion`, `/accessibility`, `/writing`, `/branding`, `/icons`, `/images`, `/app-icons`, `/sf-symbols`
+- Patterns: `/feedback`, `/loading`, `/launching`, `/onboarding`, `/modality`, `/managing-notifications`, `/playing-haptics`
+- Components and inputs: `/buttons`, `/lists-and-tables`, `/sheets`, `/tab-bars`, `/gestures`
+
 ## Material Design
 
 - Material 3: https://m3.material.io

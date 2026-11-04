@@ -3,8 +3,8 @@ name: android-premium-craft
 description: Use for any work on how a mobile or Android app looks, feels or behaves on screen, even if the request never says "Android" or "UI". Covers visual direction for a new app or dashboard, building or redesigning a screen or theme, accessibility questions, scoring or reviewing an app or screenshots, making an app less generic, tablets and foldables, insets, animation, a list that stutters or drops FPS, and UI release reviews. Not for backend, networking, data-layer or build-only work.
 license: Apache-2.0
 metadata:
-  version: "2.3.4"
-  updated: "2026-10-31"
+  version: "2.3.5"
+  updated: "2026-11-03"
 ---
 
 # Android Premium Craft v2
@@ -23,7 +23,7 @@ This file is a router. Load only the modules the current mode needs (links below
 
 1. **Recon before opinions.** Read the toolkit (Compose/Views/hybrid), theme, components, `compileSdk`/`targetSdk`, Compose BOM, Material 3 version, navigation library and test setup. Run `scripts/project_probe.py`. Never assume an API exists in the project's version.
 2. **Preserve behavior and scope.** No toolkit migration, dependency upgrade, navigation rewrite or global theme change unless asked. Touch the fewest files. Business logic is out of scope.
-3. **Decide a direction, then a system, then pixels.** Pick one named anchor from [aesthetic-anchors](modules/02-direction/aesthetic-anchors.md), encode it as tokens, and build only with tokens. No hex literals, raw `sp` or ad-hoc `dp` in screens.
+3. **Decide a direction, then a system, then pixels.** Pick one named anchor from [aesthetic-anchors](modules/02-direction/aesthetic-anchors.md), encode it as tokens, and build only with tokens. No hex literals, raw `sp` or ad-hoc `dp` in screens. The quality bar for restraint, hierarchy and finish is the Apple HIG distilled in [apple-hig-principles](modules/02-direction/apple-hig-principles.md), always built with Material components and Android conventions, never an iOS look-alike.
 4. **Never ship slop.** Check every screen against [anti-slop](modules/02-direction/anti-slop.md). Defaults (baseline purple, card-everything, gradient hero, centered everything, emoji icons) are not a design.
 5. **Touch, space and access are design, not QA.** Hit area >=48dp, insets handled once, text scales to 200% without loss, every control has a TalkBack name/role/state, gesture actions have visible or custom-action alternatives, color is never the only signal.
 6. **States before screenshots.** Design loading, empty, error, offline, partial, permission and long-content states with the happy path, not after it.
@@ -53,12 +53,12 @@ Feedback rule: after step 5 or 7 finds a P0/P1, fix and repeat from step 5. Stop
 
 | Mode | Purpose | Load | Edits |
 |---|---|---|---|
-| `critique` (default) | Master critique: Craft Score 0-100 + scorecard, top 3-5 issues, persona red flags, quick wins, action plan. Write the design review before running lint or palette. `critique quick`: 2 strengths + 5 findings, no score | master-critique, critique-rubric, anti-slop | No |
-| `shape` | Brief + the five-line direction (product, character, world, moments, signature) + anchor + token proposal before any code | product-brief, aesthetic-anchors, 03-system | No |
+| `critique` (default) | Master critique: Craft Score 0-100 + scorecard, top 3-5 issues, persona red flags, quick wins, action plan. Write the design review before running lint or palette. `critique quick`: 2 strengths + 5 findings, no score | master-critique, critique-rubric, anti-slop, apple-hig-principles (HIG pass) | No |
+| `shape` | Brief + the five-line direction (product, character, world, moments, signature) + anchor + token proposal before any code | product-brief, aesthetic-anchors, apple-hig-principles, 03-system | No |
 | `system` | Create or document the design system (`DESIGN.md` + theme code) | 03-system, tokens-and-theming | On request |
-| `build` | New screen or flow from an approved direction. Direction or `DESIGN.md` missing or only a template: do not stop; follow the project's theme, or pick an anchor, build, and list every assumption. Give every screen state a preview, plus stress previews: dark, 200% font scale and RTL | 04, 05, states, visual loop | Yes |
+| `build` | New screen or flow from an approved direction. Direction or `DESIGN.md` missing or only a template: do not stop; follow the project's theme, or pick an anchor, build, and list every assumption. Give every screen state a preview, plus stress previews: dark, 200% font scale and RTL | 04, 05, states, apple-hig-principles, visual loop | Yes |
 | `redesign` | Rework an existing screen to an approved direction. Triage first (heavy, light or no slop; a sound screen gets two or three refinements, not a rework), then fix in layers: spacing, color, icons, copy, type, layout, details, imagery, motion | as `build` + critique, anti-slop | Yes |
-| `polish` | Alignment, rhythm, type, icons, states, micro-motion; no re-architecture. Same triage and layer order as `redesign` | anti-slop, 03-system, motion | Yes |
+| `polish` | Alignment, rhythm, type, icons, states, micro-motion; no re-architecture. Same triage and layer order as `redesign` | anti-slop, apple-hig-principles, 03-system, motion | Yes |
 | `bolder` / `quieter` | Raise or lower visual intensity within the anchor | aesthetic-anchors, color, typography | Yes |
 | `distill` | Remove nested cards, duplicate labels, decoration, chrome | anti-slop, layout-and-hierarchy | Yes |
 | `touch` | Reach, targets, feedback, gestures, haptics | accessibility, states-and-feedback | On request |
@@ -85,7 +85,8 @@ Typical chains: new app `shape -> system -> build -> see -> harden -> release-re
 - [product-brief.md](modules/01-discover/product-brief.md) - user, job, context of use, domain register
 
 **02 Direction**
-- [aesthetic-anchors.md](modules/02-direction/aesthetic-anchors.md) - 10 named directions with full recipes
+- [aesthetic-anchors.md](modules/02-direction/aesthetic-anchors.md) - 11 named directions with full recipes
+- [apple-hig-principles.md](modules/02-direction/apple-hig-principles.md) - Apple HIG quality bar translated to Material: principles, rules, pt-to-dp, what not to port
 - [anti-slop.md](modules/02-direction/anti-slop.md) - generic-AI patterns, why they fail, the fix
 - [reference-and-motion-study.md](modules/02-direction/reference-and-motion-study.md) - screenshots, recordings, originality
 

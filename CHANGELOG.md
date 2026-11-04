@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.3.5 - 2026-11-03
+
+- New `modules/02-direction/apple-hig-principles.md`: the Apple Human Interface Guidelines (29 official pages read 2026-11-03, including the design principles reintroduced in June 2026) distilled into Android rules built with Material components: the eight principles, rules for hierarchy, color, type, depth, motion, feedback, words, modals and brand, a pt-to-dp table, a "do not port" list and a ten-question HIG pass.
+- New anchor 11, *Refined Restraint*, for apps the brief calls elegant.
+- `SKILL.md` names the HIG as the quality bar and loads the module in `critique`, `shape`, `build` and `polish`; `AGENTS_SNIPPET.md` gets one always-on line.
+- Not measured yet: no eval round was run on this change.
+
 ## v2.3.4 - 2026-11-02
 
 Ideas adapted from [unslop](https://github.com/heydamir/unslop) (CC BY 4.0, credited in `research/sources.md`), rewritten for Android and Material 3.
